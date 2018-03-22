@@ -1,4 +1,16 @@
+:root {
+  --main: #e849e8;
+  --main-light: #ff92e6;
+  --main-lighest: #ffbff0;
+
+  --lightgrey: #e3e3e3;
+  --grey: #ccc;
+  --darkgrey: #666;
+  --charcoal: #333;
+}
+
 * {margin:0; padding:0; box-sizing:border-box;}
+
 
 body {
   font-size: 16px;
@@ -10,11 +22,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 3em;
+  margin: 3em 0;
+}
+
+.logo {
+  width: 6em;
 }
 
 h1, h2 {
-  color: #666;
+  color: var(--darkgrey);
   text-align: center;
 }
 
@@ -39,7 +55,7 @@ h2 {
 
 .bar {
   display: block;
-  background-color: #333;
+  background-color: var(--charcoal);
   width: 1.2em;
 }
 
@@ -48,7 +64,8 @@ h2 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #e3e3e3;
+  background-color: var(--lightgrey);;
+  min-height: 100vh;
 }
 
 .valgomat-wrap {
@@ -65,7 +82,7 @@ h2 {
 
 .case-blurb {
   padding: 2em;
-  background-color: #333;
+  background-color: var(--charcoal);
   color: #ccc;
 }
 
@@ -74,6 +91,49 @@ h2 {
   font-weight: 700;
   display: block;
   color: white;
+}
+
+/* spørsmål progres */
+.progress-bar {
+  margin: 1em;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.progress-bar::before,
+.progress-bar::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: .3em;
+  height: .4em;
+}
+
+.progress-bar::after {
+  margin: 0 .5em;
+  width: 33%;
+  background-color: var(--main);
+}
+
+.progress-bar::before {
+  width: 100%;
+  background-color: var(--grey);
+}
+
+.progress-active,
+.progress-inactive {
+  z-index: 1;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+}
+
+.progress-active {
+  background-color: var(--main);
+}
+
+.progress-inactive {
+  background-color: var(--grey);
 }
 
 /* valgknapper */
@@ -91,36 +151,68 @@ h2 {
   position: absolute;
   top: 1.5em;
   left: 1em;
-  background-color: #ddd;
+  background-color: var(--lightgrey);
   width: calc(100% - 2em);
   height: 1.2em;
 }
 
-.valgomat-buttons > a {
+.poll {
   z-index: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: var(--darkgrey);
 }
 
-.valgomat-buttons > a::before {
+.poll > div {
   display: block;
-  content:'';
   width: 4em;
   height: 4em;
   margin-bottom: 1em;
   border-radius: 50%;
-  background-color: #F3D;
 
   transition: .3s cubic-bezier(.45,1.46,.75,1);
 }
 
-.valgomat-buttons > a:hover::before {
-  background-color: #F6E;
-  transform: scale(1.3);
+.poll-active {
+  background-color: var(--main);
+}
+
+.poll-active::before {
+  display: block;
+  content: '';
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background-color: white;
+  animation: pulse-out 2s ease infinite;
+}
+
+@keyframes pulse-out {
+  from { transform: scale(0); opacity: .8; }
+  to   { transform: scale(1); opacity: 0   }
+}
+
+.poll-inactive {
+  background-color: var(--grey);
+  transform: scale(.8);
+}
+
+.poll:hover > div,
+.poll:active > div {
+  background-color: var(--main-light);
+  transform: scale(1.2);
+}
+
+.poll > p {
+  transition: .2s;
+}
+
+.poll:hover > p,
+.poll:active > p {
+  color: var(--main);
 }
 
 /* valgomat spørsmål */
@@ -130,12 +222,13 @@ h2 {
 
 .valgomat-question > p {
   margin-top: 3em;
+  color: var(--darkgrey);
 }
 
 .valgomat-question::before {
   content:'«';
   display: inline-block;
-  color: magenta;
+  color: var(--main);
   font-size: 6em;
   margin-right: .1em;
 }
@@ -148,24 +241,40 @@ h2 {
   justify-content: space-between;
 }
 
-.navbtn-inactive, .navbtn-active {
-  text-decoration: none;
-  padding: .5em;
-  border-radius: 3px;
-  width: 5em;
+.navbtn-left, .navbtn-right {
+  height: 2.5em;
+  width: 100%;
+  cursor: pointer;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
-.navbtn-inactive {
-  border: 2px solid magenta;
-  padding: calc(.5em - 2px);
-  color: magenta;
+.navbtn-right {
+  background-image: url('neste.svg');
+  background-position: right;
 }
 
-.navbtn-active {
-  color: white;
-  background-color: magenta;
+.navbtn-right:hover,
+.navbtn-right:active {
+  background-image: url('neste-h.svg');
 }
 
 .navbtn-left {
-  text-align: right;
+  background-image: url('forrige.svg');
+  background-position: left;
+}
+
+.navbtn-left:hover,
+.navbtn-left:active {
+  background-image: url('forrige-h.svg');
+}
+
+
+.noselect {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

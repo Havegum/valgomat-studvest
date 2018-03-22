@@ -1,3 +1,5 @@
+"use strict";
+
 // VARIABLES
 var SP = {};
 SP.partier = ['va','sd','rl','il','ll','kd','bl'];
@@ -7,7 +9,7 @@ SP.fullname = {
   rl: 'Realistlista',
   il: 'Internasjonal liste',
   ll: 'Liberal liste',
-  kd: 'Kristendemokratisk l iste',
+  kd: 'Kristendemokratisk liste',
   bl: 'Blå liste'
 }
 
@@ -21,6 +23,9 @@ SP.response = {
   bl: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
+SP.length = 15;
+SP.currentQuestion = 6;
+
 
 // ONLOAD
 window.onload = async function() {
@@ -30,8 +35,21 @@ window.onload = async function() {
     console.log(e);
   }
   drawParties();
+  drawProgressBar();
 };
 
+function drawProgressBar() {
+  var build = document.createDocumentFragment();
+
+  for(let i = 0; i < SP.length; i++) {
+    let elem = document.createElement('div');
+    elem.classList.add('progress-' + (i < SP.currentQuestion ? 'active' : 'inactive'));
+
+    build.appendChild(elem);
+  }
+
+  document.getElementById('progress-bar').appendChild(build);
+}
 
 // FUNCTIONS
 async function loadCSV() {
@@ -69,4 +87,17 @@ function drawParties() {
   }
 
   document.getElementById('graph').appendChild(div);
+}
+
+function check(e) {
+  e = e.firstElementChild;
+  if(e.classList.contains('poll-active')) return;
+
+  var checked = document.getElementsByClassName('poll-active')[0];
+  if(checked === undefined) {
+    /* enable next-button */
+  }
+
+  checked.classList.replace('poll-active', 'poll-inactive');
+  e.classList.replace('poll-inactive', 'poll-active');
 }
