@@ -3,13 +3,50 @@
 <head>
   <meta charset="utf-8">
   <title>Studvest Valgomat SP-Valg 2018</title>
-  <link rel="stylesheet" href="./valgometer.css">
-  <script src="./valgometer.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="./valgomat.css">
+  <script src="./valgomat.js"></script>
 </head>
 <body>
-  <a class="valgknapp disagree" href="#"></a>
-  <a class="valgknapp neutral" href="#"></a>
-  <a class="valgknapp agree" href="#"></a>
+  <div class="content-wrap">
+    <div class="valgomat-head">
+      <img src="" alt="Studvest logo">
+      <h1>Valgomat 2018</h1>
+      <h2>UiB Studentparlamentet</h2>
+    </div>
 
+    <div id="graph" class=".graph"></div>
+
+    <div class="valgomat-wrap">
+
+      <div class="progress-bar"></div>
+
+      <div class="valgomat-light">
+        <div class="valgomat-buttons">
+          <a id="No" href="#">
+            <div class="opinion active"></div><p>Uenig</p></a>
+          <a id="Neutral" href="#">Nøytral</a>
+          <a id="Yes" href="#">Enig</a>
+        </div>
+
+        <div class="valgomat-question">
+          <p>UiB burde gi gratis iskrem og sjokolade til alle studentene hver dag etter forelesning</p>
+        </div>
+
+      </div>
+
+      <div class="valgomat-navbar">
+        <a href="#" class="navbtn-inactive navbtn-left">Forrige</a>
+        <a href="#" class="navbtn-active navbtn-right">Neste</a>
+      </div>
+
+
+      <div class="case-blurb">
+        <p>Iskrem og sjokolade viser seg å være effektive virkemidler til å opprettholde energinivået til studentene etter tunge forelesninger. Samtidig mener andre at vaffler med blåbærsyltetøy og månedlige minisåpeleveranser er et mer kostnadseffektivt vedtak.</p>
+      </div>
+
+    </div>
+
+  </div>
 </body>
 </html>

@@ -7,7 +7,7 @@ SP.fullname = {
   rl: 'Realistlista',
   il: 'Internasjonal liste',
   ll: 'Liberal liste',
-  kd: 'Kristendemokratisk liste',
+  kd: 'Kristendemokratisk l iste',
   bl: 'Blå liste'
 }
 
@@ -62,11 +62,11 @@ function drawParties() {
     let bar = document.createElement('div');
     bar.classList.add('bar');
 
-    bar.style.height = '15em';
+    bar.style.height = '10em';
     bar.id = party;
 
     div.appendChild(bar);
   }
 
-  document.body.appendChild(div);
+  document.getElementById('graph').appendChild(div);
 }
