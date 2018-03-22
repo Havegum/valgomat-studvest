@@ -6,7 +6,7 @@ Studvests første interaktive valgomat!
 
 Målet er en lett-å-bruke, lavterskel valgomat som retter søkelyset på SP-valget 2018.
 
-![mockup](./mockup-2-jpg)
+![mockup](./mockup-2.jpg)
 
 ## Utvikler
 
