@@ -1,7 +1,7 @@
 :root {
   --main: #e849e8;
   --main-light: #ff92e6;
-  --main-lighest: #ffbff0;
+  --main-lightest: #ffbff0;
 
   --lightgrey: #e3e3e3;
   --grey: #ccc;
@@ -9,7 +9,7 @@
   --charcoal: #333;
 }
 
-* {margin:0; padding:0; box-sizing:border-box;}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 
 body {
@@ -64,24 +64,71 @@ h2 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: var(--lightgrey);;
+  background-color: var(--lightgrey);
+  background-image: url('noise.jpg');
+  background-position: center;
   min-height: 100vh;
 }
 
-.valgomat-wrap {
+#valgomat {
+  position: relative;
+  width: 100%;
+}
+
+.valgomat-full {
+  position: absolute;
   display: flex;
+  left: 0;
+  right: 0;
+  margin: 0 auto 3em;
   max-width: 30em;
   background-color: white;
   flex-direction: column;
   box-shadow: 0 4px 8px #0003;
 }
 
-.valgomat-light {
-  padding: 3em 4em 2em;
+/* Slide-animasjoner */
+.slideout-left {
+  animation: slideleft .5s ease-out;
+  opacity: 0;
+  transform: translateX(-25%);
+}
+
+.slidein-left {
+  animation: slideleft .5s ease-in;
+  animation-direction: reverse;
+  opacity: 1;
+}
+
+@keyframes slideleft {
+  from { opacity: 1; transform: translateX(0);}
+  to   { opacity: 0; transform: translateX(-25%);}
+}
+
+.slideout-right {
+  animation: slideright .5s ease-out;
+  transform: translateX(25%);
+  opacity: 0;
+}
+
+.slidein-right {
+  animation: slideright .5s ease-in;
+  animation-direction: reverse;
+  opacity: 1;
+}
+
+@keyframes slideright {
+  from { opacity: 1; transform: translateX(0);}
+  to   { opacity: 0; transform: translateX(25%);}
+}
+
+
+.valgomat-inner {
+  padding: 2em 4em;
 }
 
 .case-blurb {
-  padding: 2em;
+  padding: 2em 4em;
   background-color: var(--charcoal);
   color: #ccc;
 }
@@ -93,36 +140,37 @@ h2 {
   color: white;
 }
 
-/* spørsmål progres */
-.progress-bar {
-  margin: 1em;
+/* spørsmål progress */
+.progress {
+  position: relative;
+  margin: 3em 2em 1em;
+}
+
+.progress-bar-markers {
   display: flex;
   justify-content: space-between;
   position: relative;
 }
-.progress-bar::before,
-.progress-bar::after {
-  display: block;
-  content: '';
-  position: absolute;
-  top: .3em;
+
+.progress-bar-fill,
+.progress-bar-background {
   height: .4em;
+  position: absolute;
+  bottom: .3em;
 }
 
-.progress-bar::after {
-  margin: 0 .5em;
-  width: 33%;
+.progress-bar-fill {
+  /* width: calc(33.3% + .5em); Update for each question */
   background-color: var(--main);
 }
 
-.progress-bar::before {
+.progress-bar-background {
   width: 100%;
   background-color: var(--grey);
 }
 
 .progress-active,
 .progress-inactive {
-  z-index: 1;
   height: 1em;
   width: 1em;
   border-radius: 50%;
@@ -136,12 +184,40 @@ h2 {
   background-color: var(--grey);
 }
 
+.progress-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: -1em 0 1em;
+ }
+
+
+/* TODO: Questions follows the progress bar */
+/* .progress-text::after {
+  display: block;
+  content: '';
+  margin-top: .5em;
+  width: .4em;
+  height: .6em;
+  background-color: var(--main);
+} */
+
+.progress-text > p {
+  white-space: nowrap;
+  color: var(--main);
+  font-weight: 700;
+  font-size: .7em;
+}
+
+.progress-text > p > span {
+  color: var(--grey);
+}
+
 /* valgknapper */
 .valgomat-buttons {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2em;
   position: relative;
 }
 
@@ -158,6 +234,7 @@ h2 {
 
 .poll {
   z-index: 1;
+  cursor: pointer;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -191,8 +268,9 @@ h2 {
 }
 
 @keyframes pulse-out {
-  from { transform: scale(0); opacity: .8; }
-  to   { transform: scale(1); opacity: 0   }
+  0%   { opacity:  0; transform: scale(.15); }
+  30%  { opacity: .5; }
+  100% { opacity:  0; transform: scale(1);   }
 }
 
 .poll-inactive {
@@ -203,7 +281,12 @@ h2 {
 .poll:hover > div,
 .poll:active > div {
   background-color: var(--main-light);
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+.poll:hover > .poll-inactive,
+.poll:active > .poll-inactive {
+  transform: scale(.95);
 }
 
 .poll > p {
@@ -221,12 +304,13 @@ h2 {
 }
 
 .valgomat-question > p {
-  margin-top: 3em;
   color: var(--darkgrey);
+  margin-bottom: 2em;
 }
 
 .valgomat-question::before {
   content:'«';
+  margin-top: -0.45em;
   display: inline-block;
   color: var(--main);
   font-size: 6em;
@@ -235,7 +319,7 @@ h2 {
 
 /* navbar */
 .valgomat-navbar {
-  padding: 2em;
+  padding: 1em 2em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -261,6 +345,11 @@ h2 {
   background-image: url('neste-h.svg');
 }
 
+.navbtn-right-disabled {
+  background-image: url('neste-d.svg') !important;
+  cursor: default;
+}
+
 .navbtn-left {
   background-image: url('forrige.svg');
   background-position: left;
@@ -270,7 +359,6 @@ h2 {
 .navbtn-left:active {
   background-image: url('forrige-h.svg');
 }
-
 
 .noselect {
   -moz-user-select: none;
