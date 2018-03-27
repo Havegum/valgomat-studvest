@@ -2,9 +2,7 @@
 
 // VARIABLES
 var SP = {
-  partier: ['va','sd','rl','il','ll','kd','bl'],
-
-  fullname: {
+  partier: {
     va: 'Venstrealliansen',
     sd: 'Sosialdemokratisk liste',
     rl: 'Realistlista',
@@ -15,131 +13,173 @@ var SP = {
   },
 
   partyResponses: {
-    va: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    sd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    rl: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    il: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ll: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    kd: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    bl: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    va: [1, 2, 1, 0, 0, 2, 2, 1, 0, 1, 1, 0, 0, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+    sd: [2, 2, 0, 2, 2, 0, 1, 0, 2, 2, 2, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    rl: [0, 1, 1, 0, 0, 1, 0, 2, 2, 0, 0, 0, 1, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+    il: [1, 0, 2, 1, 1, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    ll: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    kd: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+    bl: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   },
+
+  partyPriorities: {
+    va: [0, 1, 2, 3, 4],
+    sd: [1, 2, 3, 4, 5],
+    rl: [2, 3, 4, 5, 6],
+    il: [3, 4, 5, 6, 7],
+    ll: [4, 5, 6, 7, 8],
+    kd: [5, 6, 7, 8, 9],
+    bl: [6, 7, 8, 9, 10]
+  },
+
+  priorities: [],
+
+  partyPriorityMultiplier: 2,
+
+  priorityMultiplier: 2,
+
+  currentPanel: 0,
 
   userResponse: [],
 
-  panels: []
+  panels: [],
+
+  ol: []
 
 };
 
 SP.question = [
   {
+    shorthand: "Kjønnskvotering",
     text: "Det bør være kjønnskvotering til enkelte studielinjer.",
     case: ""
   },
   {
+    shorthand: "Konkurranseutsatt kantinedrift",
     text:"Kantinedriften på campus bør konkurranseutsettes.",
     case:""
   },
   {
+    shorthand: "Akademika-monopol",
     text:"Akademika bør ikke ha monopol på pensumsalg på campus.",
     case:""
   },
   {
+    shorthand: "Valgfri eksamensform",
     text:"Som student bør man selv få velge hvilken form for eksamen man skal ha.",
     case:""
   },
   {
+    shorthand: "Eksamensfri 18. mai",
     text:"Det bør være eksamensfri 18. mai.",
     case:""
   },
   {
+    shorthand: "Refusjonsprioritering fra Sammens helsefond",
     text:"Det var riktig å endre Sammens helsefond slik at refusjon til psykologtimer prioriteres fremfor legetimer.",
     case:""
   },
   {
+    shorthand: "Meltzerfondet",
     text:"UiBs Meltzerfond bør stoppe å investere i Kongsberggruppen og oljeselskaper.",
     case:""
   },
   {
+    shorthand: "UiBs varslingssystem for seksuell trakassering",
     text:"UiBs systemer for varsling av seksuell trakassering fungerer godt nok slik de er i dag.",
     case:""
   },
   {
+    shorthand: "Hevet inntektsgrense for å få studiestøtte",
     text:"Inntektsgrensen for å få studiestøtte bør heves.",
     case:""
   },
   {
+    shorthand: "Senket inntektsgrense for å få studiestøtte",
     text:"Inntektsgrensen for å få studiestøtte bør senkes.",
     case:""
   },
   {
+    shorthand: "Religiøs aktivitet på UiB",
     text:"UiB bør legge til rette for mer religiøs aktivitet.",
     case:""
   },
   {
+    shorthand: "Obligatorisk forelesningspodcast",
     text:"Det bør være obligatorisk lyd- og videoopptak fra alle forelesninger ved UiB.",
     case:""
   },
   {
+    shorthand: "Studiestøtte",
     text:"Studiestøtten bør heves.",
     case:""
   },
   {
+    shorthand: "Taco i kantinen",
     text:"Det bør være taco i kantinen hver fredag.",
     case:""
   },
   {
+    shorthand: "Kjøttfrie dager i kantinen",
     text:"Kantinen bør ha flere kjøttfrie dager.",
     case:""
   },
   {
+    shorthand: "Gratis pensum",
     text:"Det bør være gratis pensum for studenter.",
     case:""
   },
   {
+    shorthand: "Kaffe på alle lesesaler og biblioteker",
     text:"Det bør være en form for kaffeutsalg på alle lesesaler og biblioteker.",
     case:""
   },
   {
+    shorthand: "Økt semesteravgift",
     text:"UiB bør øke semesteravgiften.",
     case:""
   },
   {
+    shorthand: "Alkoholfrie arrangementer i fadderuken",
     text:"Det bør legges mer vekt på alkoholfrie arrangementer i fadderuken.",
     case:""
   },
   {
+    shorthand: "Døgnåpe lesesaler",
     text:"Lesesaler og/eller biblioteker bør være døgnåpne.",
     case:""
   },
   {
+    shorthand: "Obligatorisk tilbakemelding på eksamenssensur",
     text:"Man bør få obligatorisk tilbakemelding på eksamenssensur?",
     case:""
   },
   {
+    shorthand: "Internasjonale studenter",
     text:"UiB legger for dårlig til rette til å inkludere internasjonale studenter?",
     case:""
   },
   {
+    shorthand: "«Hooke-forbud»",
     text:"Det bør innføres et «hooke-forbud» (innebærer både sex og klining) for faddere mot fadderbarn.",
     case:""
   }
 ]
 
-SP.length = 15;
-SP.currentQuestion = 7;
 
-var a;
+var a; // For testing purposes
+
 // ONLOAD
-window.onload = async function() {
+window.addEventListener('load', async function() {
   try {
     loadCSV();
   } catch (e) {
     console.error(e);
   }
   drawParties();
-  a = new Panel(0);
+  a = new QuestionPanel(0, true);
   a.display();
-};
+}, {once:true});
 
 // FUNCTIONS
 async function loadCSV() {
@@ -159,9 +199,124 @@ async function loadCSV() {
   });
 }
 
-function Panel(questionNum) {
+function Panel() {
   var panel = document.createElement('div');
   panel.classList.add('valgomat-full');
+  this.panel = panel;
+}
+
+// Navbar constructor
+Panel.prototype.Navbar = function(panel, forwardDisabled, noReturn) {
+  var forwardDisabled = forwardDisabled || true;
+  var build = document.createElement('div');
+  build.classList.add('valgomat-navbar');
+
+  if(!noReturn) {
+    var backBtn = document.createElement('div');
+    backBtn.classList.add('navbtn-left', 'noselect');
+    build.appendChild(backBtn);
+    backBtn.addEventListener('click', () => {
+      if(panel.interactable) panel.jumpTo(panel.questionNum - 1);
+    });
+  }
+
+  var forwardBtn = document.createElement('div');
+  forwardBtn.classList.add('navbtn-right', 'noselect');
+  if(forwardDisabled) {
+    forwardBtn.classList.add('navbtn-right-disabled');
+  }
+  forwardBtn.addEventListener('click', () => {
+    if(!forwardBtn.classList.contains('navbtn-right-disabled') && panel.interactable) {
+      if(panel.interactable) panel.jumpTo(panel.questionNum + 1);
+    }
+  });
+  build.appendChild(forwardBtn);
+
+  this.build = build;
+  this.forward = forwardBtn;
+}
+
+// Save data
+Panel.prototype.store = function () {
+  SP.userResponse[this.questionNum] = this.response;
+};
+
+// Place on screen
+Panel.prototype.display = function (fromLeft) {
+  document.getElementById('valgomat').appendChild(this.panel);
+  this.slidein(fromLeft);
+};
+
+// Slide in from left or right
+Panel.prototype.slidein = function (fromLeft) {
+  this.interactable = false;
+  var slideclass = 'slidein-' + (fromLeft ? 'left':'right');
+
+  this.panel.classList.add(slideclass);
+  setTimeout(() => {
+    this.panel.classList.remove(slideclass);
+    this.interactable = true;
+  }, 500);
+};
+
+// Slide out to left or right
+Panel.prototype.slideout = function (toRight) {
+  this.interactable = false;
+  var slideclass = 'slideout-' + (toRight ? 'right':'left');
+  this.panel.classList.add(slideclass);
+  setTimeout(() => {
+    this.panel.classList.remove(slideclass);
+    this.panel.parentNode.removeChild(this.panel);
+    this.interactable = true;
+  }, 500);
+};
+
+// jumpTo(n)
+Panel.prototype.jumpTo = function(target) {
+  if(target === this.questionNum) return this;
+  var incomingPanel, slideLeft;
+
+  switch (target) {
+    case 'pri': target = SP.question.length; break;
+    case 'score': target = SP.question.length + 1; break;
+  }
+
+  slideLeft = (target < this.questionNum);
+
+  this.slideout(slideLeft);
+
+  if (SP.panels[target]) {
+    // If panel already exists, use that panel.
+    incomingPanel = SP.panels[target];
+
+  } else {
+    // Otherwise, make a new appropriate panel
+    switch (target) {
+      case SP.question.length:
+        console.log('drawing priorities');
+        incomingPanel = new PrioritiesPanel();
+        break;
+
+      case SP.question.length + 1:
+        incomingPanel = new ScorePanel();
+        break;
+
+      default:
+        incomingPanel = new QuestionPanel(target);
+    }
+  }
+
+  SP.currentPanel = target;
+  incomingPanel.display(slideLeft)
+
+  a = incomingPanel;
+  return incomingPanel;
+}
+
+function QuestionPanel(questionNum, noReturn) {
+  Panel.call(this); // Super
+
+  var panel = this.panel;
   panel.style.zIndex = 10 + questionNum;
 
   // Progress bar
@@ -174,7 +329,8 @@ function Panel(questionNum) {
   panel.appendChild(inner.build);
 
   // Navbar
-  var navbar = new this.Navbar();
+  var forwardDisabled = true; // REVIEW: Useless variable?
+  var navbar = new this.Navbar(this, forwardDisabled, noReturn);
   panel.appendChild(navbar.build);
 
   var caseBlurb = new this.CaseBlurb();
@@ -187,13 +343,16 @@ function Panel(questionNum) {
   this.navbar = navbar;
   this.caseBlurb = caseBlurb;
   this.questionNum = questionNum;
+  this.interactable = true;
 
   // Store globally
   SP.panels[questionNum] = this;
 }
 
+QuestionPanel.prototype = Object.create(Panel.prototype);
+
 // Progress constructor
-Panel.prototype.Progress = function(n) {
+QuestionPanel.prototype.Progress = function(n) {
   var build = document.createElement('div');
   build.classList.add('progress');
   build.id = 'progress';
@@ -206,10 +365,10 @@ Panel.prototype.Progress = function(n) {
   text.textContent = 'Spørsmål ' + (n + 1);
 
   var totalQuestions = document.createElement('span');
-  totalQuestions.textContent = ' / ' + (SP.length);
+  totalQuestions.textContent = ' / ' + (SP.question.length);
 
-  text.appendChild(totalQuestions);
   pText.appendChild(text);
+  pText.appendChild(totalQuestions);
 
   build.appendChild(pText);
 
@@ -220,17 +379,19 @@ Panel.prototype.Progress = function(n) {
   var pBarFill = document.createElement('div');
   pBarFill.classList.add('progress-bar-fill');
   pBarFill.id = 'progress-bar-fill';
-  pBarFill.style.width = 'calc(' + (n / SP.length * 100) + '% + .8em)';
+  pBarFill.style.width = (n / (SP.question.length-1) * 100) + '%';
   build.appendChild(pBarFill);
 
   var pBarMarkers = document.createElement('div');
   pBarMarkers.classList.add('progress-bar-markers');
   pBarMarkers.id = 'progress-bar-markers';
-  for(let i = 0; i < SP.length; i++) {
+
+  for(let i = 0; i < SP.question.length; i++) {
     let marker = document.createElement('div');
     marker.classList.add('progress-' + (i <= n ? 'active' : 'inactive'));
     pBarMarkers.appendChild(marker);
   }
+
   build.appendChild(pBarMarkers);
 
   // Obj = { HTMLNODE };
@@ -239,7 +400,7 @@ Panel.prototype.Progress = function(n) {
 }
 
 // Inner constructor
-Panel.prototype.Inner = function(question, panel) {
+QuestionPanel.prototype.Inner = function(question, panel) {
   var question = question || 'Mangler spørsmål ...';
 
   var build = document.createElement('div');
@@ -258,9 +419,9 @@ Panel.prototype.Inner = function(question, panel) {
   var btns = document.createElement('div');
   btns.classList.add('valgomat-buttons');
 
-  btns.appendChild(new panel.PollButton(0, panel).build);
-  btns.appendChild(new panel.PollButton(1, panel).build);
   btns.appendChild(new panel.PollButton(2, panel).build);
+  btns.appendChild(new panel.PollButton(1, panel).build);
+  btns.appendChild(new panel.PollButton(0, panel).build);
 
   build.appendChild(btns);
 
@@ -268,10 +429,15 @@ Panel.prototype.Inner = function(question, panel) {
 }
 
 // PollButton constructor
-Panel.prototype.PollButton = function(n, panel) {
+QuestionPanel.prototype.PollButton = function(n, panel) {
   var build = document.createElement('div');
   build.classList.add('poll');
-  build.onclick = function() { check(this, panel) };
+  build.onclick = function() {
+    panel.response = n;
+    check(this, panel);
+    panel.store();
+    scoreAll();
+  };
 
   var graphic = document.createElement('div');
   graphic.classList.add('poll-inactive');
@@ -283,34 +449,14 @@ Panel.prototype.PollButton = function(n, panel) {
     case 1: text.textContent = 'Nøytral'; break;
     case 2: text.textContent = 'Enig';    break;
   }
+  text.classList.add('noselect')
   build.appendChild(text);
 
   this.build = build;
 }
 
-// Navbar constructor
-Panel.prototype.Navbar = function(forwardDisabled, panel) {
-  var forwardDisabled = forwardDisabled || true;
-  var build = document.createElement('div');
-  build.classList.add('valgomat-navbar');
-
-  var backBtn = document.createElement('div');
-  backBtn.classList.add('navbtn-left', 'noselect');
-  build.appendChild(backBtn);
-
-  var forwardBtn = document.createElement('div');
-  forwardBtn.classList.add('navbtn-right', 'noselect');
-  if(forwardDisabled) {
-    forwardBtn.classList.add('navbtn-right-disabled');
-  }
-  build.appendChild(forwardBtn);
-
-  this.build = build;
-  this.forward = forwardBtn;
-}
-
 // Case constructor
-Panel.prototype.CaseBlurb = function(text) {
+QuestionPanel.prototype.CaseBlurb = function(text) {
   var text = text || 'Vel, saken er at vi har mistet filen som forklarer hva saken handler om ... Veldig pinlig :(';
   var build = document.createElement('div');
   build.classList.add('case-blurb');
@@ -322,79 +468,173 @@ Panel.prototype.CaseBlurb = function(text) {
   this.build = build;
 }
 
-Panel.prototype.store = function (questionNum, response) {
-  SP.userResponse[questionNum] = response;
+function PrioritiesPanel() {
+  Panel.call(this);
+  this.questionNum = SP.question.length;
+  var panel = this.panel;
+
+  var header = document.createElement('h3');
+  header.classList.add('priority-header');
+  header.textContent = 'Hva er de viktigste sakene for deg?'
+  panel.appendChild(header)
+
+  var trackerWrap = document.createElement('div');
+  trackerWrap.classList.add('progress-text', 'noselect');
+
+  var tracker = document.createElement('p');
+  tracker.textContent = 'Prioriteringer: 0';
+  trackerWrap.appendChild(tracker);
+
+  var totalPriorities = document.createElement('span');
+  totalPriorities.textContent = ' / ' + 5;
+  trackerWrap.appendChild(totalPriorities);
+
+  panel.appendChild(trackerWrap);
+
+  var priorityListWrapper = document.createElement('div');
+  priorityListWrapper.classList.add('priority-slider-wrap');
+  SP.question.forEach((q, i) => {
+    let e = new this.PrioritySlider(q.shorthand, i, tracker, this);
+    priorityListWrapper.appendChild(e.build);
+  });
+  panel.appendChild(priorityListWrapper);
+
+  // Navbar
+  var navbar = new this.Navbar(this, true, false);
+  panel.appendChild(navbar.build);
+
+  this.navbar = navbar;
+}
+
+PrioritiesPanel.prototype = Object.create(Panel.prototype);
+
+PrioritiesPanel.prototype.PrioritySlider = function (q, i, tracker, panel) {
+  var build = document.createElement('div');
+  build.classList.add('priority-slider')
+
+  var text = document.createElement('p');
+  text.classList.add('priority-slider--shorthand', 'noselect');
+  text.textContent = q;
+  build.appendChild(text);
+
+  build.addEventListener('click', () => {
+    if(build.classList.contains('priority-slider-active')) {
+      build.classList.remove('priority-slider-active');
+      let j = SP.priorities.indexOf(i);
+      if(j > -1) SP.priorities.splice(j, 1);
+
+    } else {
+      if(SP.priorities.length < 5) {
+        build.classList.add('priority-slider-active');
+        SP.priorities.push(i);
+      }
+    }
+
+    tracker.textContent = 'Prioriteringer: ' + SP.priorities.length;
+
+    if(SP.priorities.length >= 3) {
+      panel.navbar.forward.classList.remove('navbtn-right-disabled');
+    } else if(!panel.navbar.forward.classList.contains('navbtn-right-disabled')) {
+      panel.navbar.forward.classList.add('navbtn-right-disabled');
+    }
+
+    scoreAll();
+  });
+
+  this.build = build;
 };
 
-Panel.prototype.display = function (fromLeft) {
-  document.getElementById('valgomat').appendChild(this.panel);
-  this.slidein(fromLeft);
-};
+function ScorePanel() {
+  Panel.call(this);
+  this.questionNum = SP.question.length + 1;
+}
 
-Panel.prototype.slidein = function (fromLeft) {
-  var slideclass = 'slidein-' + (fromLeft ? 'left':'right');
+ScorePanel.prototype = Object.create(Panel.prototype);
 
-  this.panel.classList.add(slideclass);
-  setTimeout(() => {
-    this.panel.classList.remove(slideclass);
-  }, 500);
-};
 
-Panel.prototype.slideout = function (toRight) {
-  var slideclass = 'slideout-' + (toRight ? 'right':'left');
-  this.panel.classList.add(slideclass);
-  setTimeout(() => {
-    this.panel.classList.remove(slideclass);
-    this.panel.parentNode.removeChild(this.panel);
-  }, 500);
-};
+function scoreAll(final) {
+  SP.max = 0;
+  var sortedParties = Object.keys(SP.partier)
+    .map(scoreForParty) // Compare score to user response
+    .map(scaleParty) // Scale party graph
+    .slice()
+    .sort(comparePartyScore) // Sort parties by size
 
-Panel.prototype.next = function () {
-  if(SP.panels[this.questionNum + 1] === undefined) {
-    var nextPanel = new Panel(this.questionNum + 1);
-  } else {
-    var nextPanel = SP.panels[this.questionNum + 1];
+  setTimeout(() => sortedParties.map((o, i) => relocateParty(o, i)), 250);
+
+  if(final) return sortedParties.map((o) => o.party);
+}
+
+function scoreForParty(party) {
+  var sum = SP.userResponse.reduce((sum, point, i) => {
+    if(point === undefined) return sum;
+    let diff = Math.abs(SP.partyResponses[party][i] - point)
+    let base = 2 - diff - (point % 2);
+    let multiplier = 1;
+
+    let userPriority = (SP.priorities.indexOf(i) > -1);
+    if(userPriority) {
+      multiplier *= SP.priorityMultiplier;
+
+      let partyPriority = (SP.partyPriorities[party].indexOf(i) > -1);
+      if(partyPriority) {
+        multiplier *= SP.partyPriorityMultiplier;
+      }
+    }
+
+    base *= multiplier;
+    return sum + base;
+  }, 0);
+  SP.max = Math.max(SP.max, sum);
+  return { party: party, sum: sum };
+}
+
+function scaleParty(o) {
+  o.elem = document.getElementById(o.party);
+  o.elem.style.height = 'calc(' + (o.sum / SP.max * 100 + (SP.currentPanel - SP.question.length)) + '% + .3em)';
+  return o;
+}
+
+function relocateParty(o, i) {
+  o.elem.style.transform = barTranslateX(i);
+  o.elem.style.backgroundColor = (o.sum === SP.max) ? 'var(--main)' : ''; // Uncomment for colored leader
+  return o;
+}
+
+function comparePartyScore(a, b) {
+  let comparison = 0;
+  if(a.sum > b.sum) {
+    comparison = -1;
+  } else if (a.sum < b.sum) {
+    comparison = 1;
   }
+  return comparison;
+}
 
-  this.store();
-  this.slideout();
-
-  nextPanel.display();
-
-  return nextPanel;
-};
-
-Panel.prototype.prev = function () {
-  if(this.questionNum === 0) return this;
-
-  this.store();
-  this.slideout(true);
-
-  var prevPanel = SP.panels[this.questionNum - 1];
-
-  prevPanel.display(true);
-
-  return prevPanel;
+function barTranslateX(i) {
+  return 'translateX(' + (1.7 * i) + 'em)';
 }
 
 function drawParties() {
-  var div = document.createElement('div');
-  div.classList.add('graph');
-
+  var build = document.createDocumentFragment();
+  var i = 0;
   for(let p in SP.partier) {
-    let party = SP.partier[p];
-    let fullname = SP.fullname[party];
+    let party = p;
+    let fullname = SP.partier[p];
 
     let bar = document.createElement('div');
     bar.classList.add('bar');
-
-    bar.style.height = '10em';
     bar.id = party;
+    bar.style.transform = barTranslateX(i);
+    bar.style.height = '50%';
+    // bar.style.opacity = 0.30 + (i*0.10); // Uncomment for greyscale color coding
 
-    div.appendChild(bar);
+    build.appendChild(bar);
+    i++;
   }
-
-  document.getElementById('graph').appendChild(div);
+  var div = document.getElementById('graph')
+  div.classList.add('graph');
+  div.appendChild(build);
 }
 
 function check(e, panel) {
@@ -410,5 +650,4 @@ function check(e, panel) {
   }
 
   e.classList.replace('poll-inactive', 'poll-active');
-
 }
