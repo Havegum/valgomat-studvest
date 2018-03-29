@@ -348,7 +348,6 @@ function QuestionPanel(questionNum, noReturn) {
   // Store globally
   SP.panels[questionNum] = this;
 }
-
 QuestionPanel.prototype = Object.create(Panel.prototype);
 
 // Progress constructor
@@ -505,7 +504,6 @@ function PrioritiesPanel() {
 
   this.navbar = navbar;
 }
-
 PrioritiesPanel.prototype = Object.create(Panel.prototype);
 
 PrioritiesPanel.prototype.PrioritySlider = function (q, i, tracker, panel) {
@@ -548,10 +546,61 @@ function ScorePanel() {
   Panel.call(this);
   this.questionNum = SP.question.length + 1;
 }
-
 ScorePanel.prototype = Object.create(Panel.prototype);
 
+function TextAssist(text, elem, leanRight) {
+  var elemBounds = elem.getBoundingClientRect();
 
+  var build = document.createElement('div');
+  build.classList.add('text-assist-fullwrap');
+
+  var div = document.createElement('div');
+  div.classList.add('text-assist-inner');
+
+  var p = document.createElement('p');
+  p.classList.add('text-assist', 'noselect');
+  p.textContent = text;
+
+  var arrow = document.createElement('img');
+  arrow.classList.add('text-assist-arrow', 'noselect');
+  arrow.src = './arrow.svg';
+
+  if(leanRight) {
+    // Do this with flexbox order instead ..
+    div.appendChild(arrow);
+    div.appendChild(p);
+  } else {
+    div.appendChild(p);
+    div.appendChild(arrow);
+  }
+
+  build.appendChild(div);
+
+  var btn = document.createElement('div');
+  btn.classList.add('text-assist-button', 'noselect')
+  btn.textContent = "OK";
+
+  build.appendChild(btn)
+
+  document.body.appendChild(build);
+  build.style.top = elemBounds.height/2 + elemBounds.top - (build.clientHeight/2) + 'px';
+  build.style.right = elemBounds.right + 16 + 'px';
+
+  window.addEventListener('resize', () => {
+    var elemBounds = elem.getBoundingClientRect();
+
+    build.style.top = (elemBounds.height/2 + elemBounds.top - (build.clientHeight/2)) + 'px';
+    build.style.right = elemBounds.right + 16 + 'px';
+  });
+}
+
+var c = () => new TextAssist(
+  'Hver søyle er en liste. Søylenes høyde illustrerer hvor mye listens svar stemmer med dine!',
+  document.getElementById('graph'),
+  false
+);
+
+// Global functions
 function scoreAll(final) {
   SP.max = 0;
   var sortedParties = Object.keys(SP.partier)

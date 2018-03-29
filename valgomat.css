@@ -16,6 +16,7 @@ body {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Valgomat header */
@@ -86,6 +87,7 @@ h2 {
   background-image: url('noise.jpg');
   background-position: center;
   min-height: 60em;
+  height: 100vh;
 }
 
 #valgomat {
@@ -427,6 +429,79 @@ h2 {
 .navbtn-left:hover,
 .navbtn-left:active {
   background-image: url('forrige-h.svg');
+}
+
+/* text assist */
+.text-assist-fullwrap {
+  font-size: .8em;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 14em;
+  color: var(--charcoal);
+  background: white;
+  border-radius: 3px;
+  z-index: 50;
+  padding: 1em;
+
+  box-shadow: 0 4px 8px #0003;
+
+  transition: .25s;
+
+  animation: slideright .5s ease-in;
+  animation-direction: reverse;
+}
+
+.text-assist-button {
+  color: white;
+  text-align: center;
+  background-color: var(--main);
+  padding: .5em;
+  border-radius: 3px;
+
+  margin-top: 1em;
+  width: 5em;
+
+  box-shadow: 0 1px 3px #0003;
+}
+.text-assist-button:hover {
+  box-shadow: 0 2px 4px #0003;
+  background-color: var(--main-light);
+}
+.text-assist-button:active {
+  position: relative;
+  top: 1px;
+  box-shadow: 0 1px 2px #0003;
+}
+
+.text-assist-inner {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.text-assist {
+  width: 10em;
+}
+
+.text-assist-arrow {
+  object-fit: contain;
+  align-self: center;
+  width: 2em;
+  height: 2em;
+
+  animation: arrowspin 3s infinite;
+}
+
+@keyframes arrowspin {
+  0%  {transform: rotate(30deg);  }
+  10% {transform: rotate(-15deg); }
+  20% {transform: rotate(0deg);   }
+  80% {transform: rotate(0deg);   }
+  90% {transform: rotate(-15deg);   }
+  100% {transform: rotate(30deg);   }
 }
 
 .noselect {
