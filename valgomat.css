@@ -7,6 +7,14 @@
   --grey: #ccc;
   --darkgrey: #666;
   --charcoal: #333;
+
+  --va: #9F151D;
+  --sd: #E74A5A;
+  --rl: #344E45;
+  --il: #EE6A1E;
+  --ll: #188A60;
+  --kd: #E29F00;
+  --bl: #2F6A9B;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -51,7 +59,18 @@ h2 {
   position: relative;
   width: 11em;
   height: 7em;
+  margin-bottom: 3em;
+  transition:
+    width .6s ease,
+    margin-bottom .6s ease;
+}
+
+.graph-notext {
   margin-bottom: 1em;
+}
+
+.graph-notext .graph-text {
+  opacity: 0;
 }
 
 .graph::after {
@@ -78,16 +97,36 @@ h2 {
     transform .6s ease;
 }
 
+
+.graph-text {
+  text-align: center;
+  width: 30em;
+  transform: translateX(-14.4em);
+  position: absolute;
+  bottom: -1.5em;
+  font-size: .8em;
+}
+
+
 /* Valgomat-panel */
 .content-wrap {
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 60em;
+  height: 100vh;
+}
+
+.BACKGROUND {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: var(--lightgrey);
   background-image: url('noise.jpg');
   background-position: center;
-  min-height: 60em;
-  height: 100vh;
 }
 
 #valgomat {
@@ -380,12 +419,16 @@ h2 {
 }
 
 .priority-slider-active {
-  color: white;
+  color: white !important; /* bad hack */
   background-color: var(--main);
 }
 
 .priority-slider-active:hover {
   background-color: var(--main-light);
+}
+
+.priority-slider-inactive > div {
+  color: var(--grey);
 }
 
 /* navbar */
@@ -431,7 +474,44 @@ h2 {
   background-image: url('forrige-h.svg');
 }
 
+.text-assist {
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: 1s;
+}
+
+.text-assist:hover > .text-assist-bg,
+.text-assist:active > .text-assist-bg {
+  opacity:.9;
+}
+
+.text-assist-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .7;
+  background-color: var(--charcoal);
+}
+
+.text-assist-text {
+  position: relative;
+  font-size: 1.2em;
+  color: var(--main-lightest);
+  text-align: center;
+  max-width: 20em;
+}
+
 /* text assist */
+/*
 .text-assist-fullwrap {
   font-size: .8em;
   position: absolute;
@@ -439,19 +519,14 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 14em;
-  color: var(--charcoal);
+  width: 16em;
+  color: var(--darkgrey);
   background: white;
   border-radius: 3px;
   z-index: 50;
   padding: 1em;
 
   box-shadow: 0 4px 8px #0003;
-
-  transition: .25s;
-
-  animation: slideright .5s ease-in;
-  animation-direction: reverse;
 }
 
 .text-assist-button {
@@ -460,16 +535,18 @@ h2 {
   background-color: var(--main);
   padding: .5em;
   border-radius: 3px;
-
+  cursor: pointer;
   margin-top: 1em;
   width: 5em;
 
   box-shadow: 0 1px 3px #0003;
 }
+
 .text-assist-button:hover {
   box-shadow: 0 2px 4px #0003;
   background-color: var(--main-light);
 }
+
 .text-assist-button:active {
   position: relative;
   top: 1px;
@@ -481,7 +558,6 @@ h2 {
   flex-direction: row;
 }
 
-
 .text-assist {
   width: 10em;
 }
@@ -489,6 +565,7 @@ h2 {
 .text-assist-arrow {
   object-fit: contain;
   align-self: center;
+  margin: 1em;
   width: 2em;
   height: 2em;
 
@@ -496,12 +573,65 @@ h2 {
 }
 
 @keyframes arrowspin {
-  0%  {transform: rotate(30deg);  }
-  10% {transform: rotate(-15deg); }
-  20% {transform: rotate(0deg);   }
-  80% {transform: rotate(0deg);   }
-  90% {transform: rotate(-15deg);   }
-  100% {transform: rotate(30deg);   }
+  0%   {transform: rotate(  0deg); }
+  60%  {transform: rotate(  0deg); }
+  70%  {transform: rotate(-15deg); }
+  80%  {transform: rotate( 30deg); }
+  90%  {transform: rotate(-15deg); }
+  100% {transform: rotate(  0deg); }
+}
+
+.shake {
+  animation: shake .13s ease infinite;
+}
+
+@keyframes shake {
+  0%   {transform:translateX( 0  );}
+  25%  {transform:translateX( 3px);}
+  75%  {transform:translateX(-3px);}
+  100% {transform:translateX( 0  );}
+}
+*/
+
+.score-list-element {
+  color: white;
+  padding: 2em;
+  margin: .25em 1em;
+}
+
+.score-list-element > h3 {
+  font-size: 2em;
+  color: white;
+  font-weight: 400;
+  margin-bottom: .8em;
+}
+
+.score-list-element > h4 {
+  font-weight: 400;
+  font-size: 1.4em;
+}
+
+.score-list-element > h5 {
+  margin-top: 1.5em;
+}
+
+.score-list-party-priority-also {
+  opacity: .6;
+  display: block;
+  margin-top: 0em;
+  margin-bottom: .3em;
+  font-size: .75em;
+  font-weight: 400;
+}
+
+
+.score-compare-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.score-compare-wrap > p {
+  width: 50%;
 }
 
 .noselect {
