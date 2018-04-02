@@ -148,7 +148,7 @@ function QuestionPanel(questionNum, noReturn) {
   var navbar = new this.Navbar(this, forwardDisabled, noReturn);
   panel.appendChild(navbar.build);
 
-  var caseBlurb = new this.CaseBlurb();
+  var caseBlurb = new this.CaseBlurb(SP.question[questionNum].case);
   panel.appendChild(caseBlurb.build);
 
   // Exposed variables
@@ -272,12 +272,30 @@ QuestionPanel.prototype.PollButton = function(n, panel) {
 
 // Case constructor
 QuestionPanel.prototype.CaseBlurb = function(text) {
-  var text = text || 'Vel, saken er at vi har mistet filen som forklarer hva saken handler om ... Veldig pinlig :(';
+  var text = text || '(Kunne ikke laste sakstekst)';
   var build = document.createElement('div');
   build.classList.add('case-blurb');
 
+
   var blurbInner = document.createElement('p');
-  blurbInner.textContent = text;
+  text = text
+    .replace(/(\[[^\]]+\]\([^\)]+\))/g, '|$1|')
+    .split(/[|]/g)
+    .map(str => {
+      if(str.charAt(0) === '[') {
+        str = str
+          .replace('[', '')
+          .replace(')', '')
+          .split(/\]\(/g);
+        return `<a href="`+str[1]+`">`+str[0]+'</a>';
+      } else {
+        return str;
+      }
+    }).join('');
+
+    console.log(text);
+    blurbInner.innerHTML = text;
+
   build.appendChild(blurbInner);
 
   this.build = build;

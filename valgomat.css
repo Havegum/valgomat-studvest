@@ -200,6 +200,20 @@ h2 {
   color: white;
 }
 
+.case-blurb a {
+  color: var(--main-lightest);
+}
+
+.case-blurb a:focus,
+.case-blurb a:hover,
+.case-blurb a:active {
+  color: var(--main-light) !important;
+}
+
+.case-blurb a:visited {
+  color: var(--main);
+}
+
 /* spørsmål progress */
 .progress {
   display: flex;
@@ -509,89 +523,6 @@ h2 {
   text-align: center;
   max-width: 20em;
 }
-
-/* text assist */
-/*
-.text-assist-fullwrap {
-  font-size: .8em;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 16em;
-  color: var(--darkgrey);
-  background: white;
-  border-radius: 3px;
-  z-index: 50;
-  padding: 1em;
-
-  box-shadow: 0 4px 8px #0003;
-}
-
-.text-assist-button {
-  color: white;
-  text-align: center;
-  background-color: var(--main);
-  padding: .5em;
-  border-radius: 3px;
-  cursor: pointer;
-  margin-top: 1em;
-  width: 5em;
-
-  box-shadow: 0 1px 3px #0003;
-}
-
-.text-assist-button:hover {
-  box-shadow: 0 2px 4px #0003;
-  background-color: var(--main-light);
-}
-
-.text-assist-button:active {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 1px 2px #0003;
-}
-
-.text-assist-inner {
-  display: flex;
-  flex-direction: row;
-}
-
-.text-assist {
-  width: 10em;
-}
-
-.text-assist-arrow {
-  object-fit: contain;
-  align-self: center;
-  margin: 1em;
-  width: 2em;
-  height: 2em;
-
-  animation: arrowspin 3s infinite;
-}
-
-@keyframes arrowspin {
-  0%   {transform: rotate(  0deg); }
-  60%  {transform: rotate(  0deg); }
-  70%  {transform: rotate(-15deg); }
-  80%  {transform: rotate( 30deg); }
-  90%  {transform: rotate(-15deg); }
-  100% {transform: rotate(  0deg); }
-}
-
-.shake {
-  animation: shake .13s ease infinite;
-}
-
-@keyframes shake {
-  0%   {transform:translateX( 0  );}
-  25%  {transform:translateX( 3px);}
-  75%  {transform:translateX(-3px);}
-  100% {transform:translateX( 0  );}
-}
-*/
 
 .score-list-element {
   color: white;

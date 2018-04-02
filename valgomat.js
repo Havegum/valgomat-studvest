@@ -52,7 +52,7 @@ SP.question = [
   {
     shorthand: "Kjønnskvotering",
     text: "Det bør være kjønnskvotering til enkelte studielinjer.",
-    case: ""
+    case: "test- [reddit!](https://reddit.com) -- but did it work???"
   },
   {
     shorthand: "Konkurranseutsatt kantinedrift",
