@@ -1,5 +1,11 @@
 "use strict";
 
+// TODO: KREDITERING
+// TODO: FACEBOOK
+
+// TODO: Alle spørsmål
+
+
 // VARIABLES
 var SP = {};
 
@@ -17,6 +23,7 @@ var a; // For testing purposes
 
 // ONLOAD
 window.addEventListener('load', async function() {
+
   try {
     var json = loadCSV();
     json = JSON.parse(await json);
@@ -27,6 +34,12 @@ window.addEventListener('load', async function() {
   Object.keys(json).forEach(key => {
     SP[key] = json[key];
   });
+
+  var credit = new Credit(await SP.byline);
+  document.getElementById('byline').appendChild(credit.build);
+
+  let scrollTarget = document.getElementsByClassName('credit-name')[0].offsetTop;
+  window.scrollTo(0, scrollTarget);
 
 
   await drawParties();

@@ -1,4 +1,24 @@
 {
+   "byline":[
+     {
+         "name":"Axel Fagerbakke",
+         "role":"Journalist",
+         "email":"af@studvest.no",
+         "img":"./axel.jpg"
+     },
+     {
+         "name":"Einar Bjøru",
+         "role":"Journalist",
+         "email":"elb@studvest.no",
+         "img":"./einar.jpg"
+      },
+      {
+         "name":"Halvard Vegum",
+         "role":"Digital utvikling",
+         "email":"halvard.vegum@gmail.com",
+         "img":"./halvard.jpg"
+      }
+   ],
    "partier":{
       "va":"Venstrealliansen",
       "sd":"Sosialdemokratisk liste",

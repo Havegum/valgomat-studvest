@@ -384,9 +384,15 @@ PrioritiesPanel.prototype.PrioritySlider = function (q, i, tracker, panel) {
 function ScorePanel() {
   Panel.call(this);
   var panel = this.panel;
+  panel.classList.add('score');
   this.questionNum = SP.question.length + 1;
   panel.style.paddingTop = '.7em';
   panel.style.paddingBottom = '.7em';
+
+  var disclaimer = document.createElement('span');
+  disclaimer.classList.add('score-disclaimer');
+  disclaimer.textContent = 'Denne valgomaten gir kun en pekepinn på hvilken liste du er mest enig i basert på et utvalg av spørsmål, og bør ikke brukes som en fasit. Studvest oppfordrer deg til å undersøke listene på egenhånd for å finne ut hvem du bør stemme på.';
+  panel.appendChild(disclaimer);
 
   scoreAll(true).forEach((party, i) => {
     panel.appendChild((new this.PartyPanel(party, i)).build);
