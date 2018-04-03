@@ -1,287 +1,48 @@
 "use strict";
 
 // VARIABLES
-var SP = {
-  partier: {
-    va: 'Venstrealliansen',
-    sd: 'Sosialdemokratisk liste',
-    rl: 'Realistlista',
-    il: 'Internasjonal liste',
-    ll: 'Liberal liste',
-    kd: 'Kristendemokratisk liste',
-    bl: 'Blå liste'
-  },
+var SP = {};
 
-  partyResponses: {
-    va: [1, 2, 1, 0, 0, 2, 2, 1, 0, 1, 1, 0, 0, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-    sd: [2, 2, 0, 2, 2, 0, 1, 0, 2, 2, 2, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-    rl: [0, 1, 1, 0, 0, 1, 0, 2, 2, 0, 0, 0, 1, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-    il: [1, 0, 2, 1, 1, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-    ll: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-    kd: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
-    bl: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-},
+SP.currentPanel = 0;
 
-  partyPriorities: {
-    va: [0, 1, 2, 3, 4],
-    sd: [1, 2, 3, 4, 5],
-    rl: [2, 3, 4, 5, 6],
-    il: [3, 4, 5, 6, 7],
-    ll: [4, 5, 6, 7, 8],
-    kd: [5, 6, 7, 8, 9],
-    bl: [6, 7, 8, 9, 10]
-  },
+SP.priorities = [];
 
-  priorities: [],
+SP.userResponse = [];
 
-  partyPriorityMultiplier: 2,
+SP.panels = [];
 
-  priorityMultiplier: 2,
-
-  currentPanel: 0,
-
-  userResponse: [],
-
-  panels: [],
-
-  ol: []
-
-};
-
-SP.question = [
-  {
-    shorthand: "Kjønnskvotering",
-    text: "Det bør være kjønnskvotering til enkelte studielinjer.",
-    case: "test- [reddit!](https://reddit.com) -- but did it work???"
-  },
-  {
-    shorthand: "Konkurranseutsatt kantinedrift",
-    text:"Kantinedriften på campus bør konkurranseutsettes.",
-    case:""
-  },
-  {
-    shorthand: "Akademika-monopol",
-    text:"Akademika bør ikke ha monopol på pensumsalg på campus.",
-    case:""
-  },
-  {
-    shorthand: "Valgfri eksamensform",
-    text:"Som student bør man selv få velge hvilken form for eksamen man skal ha.",
-    case:""
-  },
-  {
-    shorthand: "Eksamensfri 18. mai",
-    text:"Det bør være eksamensfri 18. mai.",
-    case:""
-  },
-  {
-    shorthand: "Refusjonsprioritering fra Sammens helsefond",
-    text:"Det var riktig å endre Sammens helsefond slik at refusjon til psykologtimer prioriteres fremfor legetimer.",
-    case:""
-  },
-  {
-    shorthand: "Meltzerfondet",
-    text:"UiBs Meltzerfond bør stoppe å investere i Kongsberggruppen og oljeselskaper.",
-    case:""
-  },
-  {
-    shorthand: "UiBs varslingssystem for seksuell trakassering",
-    text:"UiBs systemer for varsling av seksuell trakassering fungerer godt nok slik de er i dag.",
-    case:""
-  },
-  {
-    shorthand: "Hevet inntektsgrense for å få studiestøtte",
-    text:"Inntektsgrensen for å få studiestøtte bør heves.",
-    case:""
-  },
-  {
-    shorthand: "Senket inntektsgrense for å få studiestøtte",
-    text:"Inntektsgrensen for å få studiestøtte bør senkes.",
-    case:""
-  },
-  {
-    shorthand: "Religiøs aktivitet på UiB",
-    text:"UiB bør legge til rette for mer religiøs aktivitet.",
-    case:""
-  },
-  {
-    shorthand: "Obligatorisk forelesningspodcast",
-    text:"Det bør være obligatorisk lyd- og videoopptak fra alle forelesninger ved UiB.",
-    case:""
-  },
-  {
-    shorthand: "Studiestøtte",
-    text:"Studiestøtten bør heves.",
-    case:""
-  },
-  {
-    shorthand: "Taco i kantinen",
-    text:"Det bør være taco i kantinen hver fredag.",
-    case:""
-  },
-  {
-    shorthand: "Kjøttfrie dager i kantinen",
-    text:"Kantinen bør ha flere kjøttfrie dager.",
-    case:""
-  },
-  {
-    shorthand: "Gratis pensum",
-    text:"Det bør være gratis pensum for studenter.",
-    case:""
-  },
-  {
-    shorthand: "Kaffe på alle lesesaler og biblioteker",
-    text:"Det bør være en form for kaffeutsalg på alle lesesaler og biblioteker.",
-    case:""
-  },
-  {
-    shorthand: "Økt semesteravgift",
-    text:"UiB bør øke semesteravgiften.",
-    case:""
-  },
-  {
-    shorthand: "Alkoholfrie arrangementer i fadderuken",
-    text:"Det bør legges mer vekt på alkoholfrie arrangementer i fadderuken.",
-    case:""
-  },
-  {
-    shorthand: "Døgnåpe lesesaler",
-    text:"Lesesaler og/eller biblioteker bør være døgnåpne.",
-    case:""
-  },
-  {
-    shorthand: "Obligatorisk tilbakemelding på eksamenssensur",
-    text:"Man bør få obligatorisk tilbakemelding på eksamenssensur?",
-    case:""
-  },
-  {
-    shorthand: "Internasjonale studenter",
-    text:"UiB legger for dårlig til rette til å inkludere internasjonale studenter?",
-    case:""
-  },
-  {
-    shorthand: "«Hooke-forbud»",
-    text:"Det bør innføres et «hooke-forbud» (innebærer både sex og klining) for faddere mot fadderbarn.",
-    case:""
-  }
-]
-
+SP.ol = [];
 
 var a; // For testing purposes
 
 // ONLOAD
 window.addEventListener('load', async function() {
   try {
-    loadCSV();
+    var json = loadCSV();
+    json = JSON.parse(await json);
   } catch (e) {
     console.error(e);
   }
+
+  Object.keys(json).forEach(key => {
+    SP[key] = json[key];
+  });
+
+
   await drawParties();
   a = new QuestionPanel(0, true);
   a.display();
 }, {once:true});
 
-// Text assist v1
-/*
-function TextAssist(text, elem, action, leanRight) {
-  SP.assist = this;
-  this.text = text;
-  this.open = true;
-  var elemBounds = elem.getBoundingClientRect();
-
-  var build = document.createElement('div');
-  build.classList.add('text-assist-fullwrap', 'slidein-right');
-
-  setTimeout(function () {
-    build.classList.remove('slidein-right');
-  }, 500);
-
-  var div = document.createElement('div');
-  div.classList.add('text-assist-inner');
-
-  var p = document.createElement('p');
-  p.classList.add('text-assist', 'noselect');
-  p.textContent = text;
-
-  var arrow = document.createElement('img');
-  arrow.classList.add('text-assist-arrow', 'noselect');
-  arrow.src = './arrow.svg';
-
-  if(leanRight) {
-    // Do this with flexbox order instead ..
-    div.appendChild(arrow);
-    div.appendChild(p);
-  } else {
-    div.appendChild(p);
-    div.appendChild(arrow);
-  }
-
-  build.appendChild(div);
-
-  this.close = function() {
-    if(!SP.assist.open) return;
-    build.classList.add('slideout-left');
-    SP.assist.open = false;
-    setTimeout(() => {
-      build.classList.remove('slideout-left');
-      build.parentNode.removeChild(build);
-    }, 500);
-  };
-
-  this.next = function() {
-    SP.assist.close();
-    if(typeof action === 'function') action();
-  };
-
-  this.shake = function() {
-    build.classList.add('shake');
-    setTimeout(function () {
-      build.classList.remove('shake');
-    }, 300);
-  }
-
-  var btn = document.createElement('div');
-  btn.classList.add('text-assist-button', 'noselect');
-  btn.textContent = 'OK';
-  btn.onclick = this.next;
-
-  build.appendChild(btn)
-
-  document.body.appendChild(build);
-  build.style.top = elemBounds.height / 2 + elemBounds.top - (build.clientHeight / 2) + 'px';
-  build.style.right = elemBounds.right + 16 + 'px';
-
-  window.addEventListener('resize', () => {
-    var elemBounds = elem.getBoundingClientRect();
-
-    build.style.top = (elemBounds.height/2 + elemBounds.top - (build.clientHeight/2)) + 'px';
-    build.style.right = elemBounds.right + 16 + 'px';
-  });
-}
-var assist1 = () => new TextAssist(
-  'Hver søyle er en liste. Søylenes høyde illustrerer hvor mye listens svar stemmer med dine.',
-  document.getElementById('graph'),
-  assist2
-);
-var assist2 = () => new TextAssist(
-  'Når du har gått gjennom alle standpunktene får du en oversikt over partiene som er mest enig med deg',
-  document.getElementsByClassName('valgomat-buttons')[0],
-);
-*/
-// ########################################
-// ########################################
-// ########################################
-// ########################################
-
 // FUNCTIONS
 async function loadCSV() {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', './liste.csv', true);
+    xhr.open('GET', './data.json', true);
     xhr.onreadystatechange = function() {
       if(xhr.readyState === XMLHttpRequest.DONE) {
         if(xhr.status === 200) {
-          resolve();
+          resolve(xhr.responseText);
         } else {
           reject(xhr);
         }

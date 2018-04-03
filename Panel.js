@@ -108,7 +108,6 @@ Panel.prototype.jumpTo = function(target) {
     // Otherwise, make a new appropriate panel
     switch (target) {
       case SP.question.length:
-        console.log('drawing priorities');
         incomingPanel = new PrioritiesPanel();
         break;
 
@@ -293,7 +292,6 @@ QuestionPanel.prototype.CaseBlurb = function(text) {
       }
     }).join('');
 
-    console.log(text);
     blurbInner.innerHTML = text;
 
   build.appendChild(blurbInner);
@@ -427,8 +425,8 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
       span.classList.add('score-list-party-priority-also');
       span.textContent = SP.partier[party] + ' prioriterer også dette';
       build.appendChild(span);
-      console.log(span);
-      console.log(priorityHead);
+      // console.log(span);
+      // console.log(priorityHead);
     }
 
 

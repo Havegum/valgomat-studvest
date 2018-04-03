@@ -1,0 +1,148 @@
+{
+   "partier":{
+      "va":"Venstrealliansen",
+      "sd":"Sosialdemokratisk liste",
+      "rl":"Realistlista",
+      "il":"Internasjonal liste",
+      "ll":"Liberal liste",
+      "kd":"Kristendemokratisk liste",
+      "bl":"Blå liste"
+   },
+   "partyResponses":{
+      "va":[1, 2, 1, 0, 0, 2, 2, 1, 0, 1, 1, 0, 0, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+      "sd":[2, 2, 0, 2, 2, 0, 1, 0, 2, 2, 2, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+      "rl":[0, 1, 1, 0, 0, 1, 0, 2, 2, 0, 0, 0, 1, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+      "il":[1, 0, 2, 1, 1, 0, 2, 2, 1, 2, 0, 2, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+      "ll":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+      "kd":[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+      "bl":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+   },
+   "partyPriorities":{
+      "va":[0, 1, 2, 3, 4],
+      "sd":[1, 2, 3, 4, 5],
+      "rl":[2, 3, 4, 5, 6],
+      "il":[3, 4, 5, 6, 7],
+      "ll":[4, 5, 6, 7, 8],
+      "kd":[5, 6, 7, 8, 9],
+      "bl":[6, 7, 8, 9, 10]
+   },
+   "partyPriorityMultiplier":2,
+   "priorityMultiplier":2,
+   "question":[
+      {
+         "shorthand":"Kjønnskvotering",
+         "text":"Det bør være kjønnskvotering til enkelte studielinjer.",
+         "case":"test- [reddit!](https://reddit.com) -- but did it work???"
+      },
+      {
+         "shorthand":"Konkurranseutsatt kantinedrift",
+         "text":"Kantinedriften på campus bør konkurranseutsettes.",
+         "case":""
+      },
+      {
+         "shorthand":"Akademika-monopol",
+         "text":"Akademika bør ikke ha monopol på pensumsalg på campus.",
+         "case":""
+      },
+      {
+         "shorthand":"Valgfri eksamensform",
+         "text":"Som student bør man selv få velge hvilken form for eksamen man skal ha.",
+         "case":""
+      },
+      {
+         "shorthand":"Eksamensfri 18. mai",
+         "text":"Det bør være eksamensfri 18. mai.",
+         "case":""
+      },
+      {
+         "shorthand":"Refusjonsprioritering fra Sammens helsefond",
+         "text":"Det var riktig å endre Sammens helsefond slik at refusjon til psykologtimer prioriteres fremfor legetimer.",
+         "case":""
+      },
+      {
+         "shorthand":"Meltzerfondet",
+         "text":"UiBs Meltzerfond bør stoppe å investere i Kongsberggruppen og oljeselskaper.",
+         "case":""
+      },
+      {
+         "shorthand":"UiBs varslingssystem for seksuell trakassering",
+         "text":"UiBs systemer for varsling av seksuell trakassering fungerer godt nok slik de er i dag.",
+         "case":""
+      },
+      {
+         "shorthand":"Hevet inntektsgrense for å få studiestøtte",
+         "text":"Inntektsgrensen for å få studiestøtte bør heves.",
+         "case":""
+      },
+      {
+         "shorthand":"Senket inntektsgrense for å få studiestøtte",
+         "text":"Inntektsgrensen for å få studiestøtte bør senkes.",
+         "case":""
+      },
+      {
+         "shorthand":"Religiøs aktivitet på UiB",
+         "text":"UiB bør legge til rette for mer religiøs aktivitet.",
+         "case":""
+      },
+      {
+         "shorthand":"Obligatorisk forelesningspodcast",
+         "text":"Det bør være obligatorisk lyd- og videoopptak fra alle forelesninger ved UiB.",
+         "case":""
+      },
+      {
+         "shorthand":"Studiestøtte",
+         "text":"Studiestøtten bør heves.",
+         "case":""
+      },
+      {
+         "shorthand":"Taco i kantinen",
+         "text":"Det bør være taco i kantinen hver fredag.",
+         "case":""
+      },
+      {
+         "shorthand":"Kjøttfrie dager i kantinen",
+         "text":"Kantinen bør ha flere kjøttfrie dager.",
+         "case":""
+      },
+      {
+         "shorthand":"Gratis pensum",
+         "text":"Det bør være gratis pensum for studenter.",
+         "case":""
+      },
+      {
+         "shorthand":"Kaffe på alle lesesaler og biblioteker",
+         "text":"Det bør være en form for kaffeutsalg på alle lesesaler og biblioteker.",
+         "case":""
+      },
+      {
+         "shorthand":"Økt semesteravgift",
+         "text":"UiB bør øke semesteravgiften.",
+         "case":""
+      },
+      {
+         "shorthand":"Alkoholfrie arrangementer i fadderuken",
+         "text":"Det bør legges mer vekt på alkoholfrie arrangementer i fadderuken.",
+         "case":""
+      },
+      {
+         "shorthand":"Døgnåpe lesesaler",
+         "text":"Lesesaler og/eller biblioteker bør være døgnåpne.",
+         "case":""
+      },
+      {
+         "shorthand":"Obligatorisk tilbakemelding på eksamenssensur",
+         "text":"Man bør få obligatorisk tilbakemelding på eksamenssensur?",
+         "case":""
+      },
+      {
+         "shorthand":"Internasjonale studenter",
+         "text":"UiB legger for dårlig til rette til å inkludere internasjonale studenter?",
+         "case":""
+      },
+      {
+         "shorthand":"«Hooke-forbud»",
+         "text":"Det bør innføres et «hooke-forbud» (innebærer både sex og klining) for faddere mot fadderbarn.",
+         "case":""
+      }
+   ]
+}
