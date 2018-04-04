@@ -95,7 +95,7 @@ h2 {
 .credit-person-wrap:hover > .credit-portrait,
 .credit-person-wrap:active > .credit-portrait {
   opacity: 1;
-  transform:scale(1.08);
+  transform:scale3d(1.08,1.08,0);
 }
 
 .byline-text {
@@ -409,25 +409,25 @@ h2 {
 }
 
 @keyframes pulse-out {
-  0%   { opacity:  0; transform: scale(.15); }
+  0%   { opacity:  0; transform: scale3d(.15, .15, 0); }
   30%  { opacity: .5; }
-  100% { opacity:  0; transform: scale(1);   }
+  100% { opacity:  0; transform: scale3d(1);   }
 }
 
 .poll-inactive {
   background-color: var(--grey);
-  transform: scale(.8);
+  transform: scale3d(.8, .8, 0);
 }
 
 .poll:hover > div,
 .poll:active > div {
   background-color: var(--main-light);
-  transform: scale(1.1);
+  transform: scale3d(1.1, 1.1, 0);
 }
 
 .poll:hover > .poll-inactive,
 .poll:active > .poll-inactive {
-  transform: scale(.95);
+  transform: scale3d(.95,.95,0);
 }
 
 .poll > p {
