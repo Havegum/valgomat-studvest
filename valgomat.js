@@ -19,33 +19,35 @@ SP.ol = [];
 var a; // For testing purposes
 
 // ONLOAD
-window.addEventListener('load', async function() {
-
+window.addEventListener('load', function() {
   try {
     var json = loadCSV();
-    json = JSON.parse(await json);
   } catch (e) {
     console.error(e);
   }
 
-  Object.keys(json).forEach(key => {
-    SP[key] = json[key];
+  json.then(JSON.parse).then(json => {
+
+    Object.keys(json).forEach(key => {
+      SP[key] = json[key];
+    });
+
+    var credit = new Credit(SP.byline);
+    document.getElementById('byline').appendChild(credit.build);
+
+    let scrollTarget = document.getElementsByClassName('credit-name')[0].offsetTop;
+    window.scrollTo(0, scrollTarget);
+
+
+    drawParties();
+    a = new QuestionPanel(0, true);
+    a.display();
   });
 
-  var credit = new Credit(await SP.byline);
-  document.getElementById('byline').appendChild(credit.build);
-
-  let scrollTarget = document.getElementsByClassName('credit-name')[0].offsetTop;
-  window.scrollTo(0, scrollTarget);
-
-
-  await drawParties();
-  a = new QuestionPanel(0, true);
-  a.display();
 }, {once:true});
 
 // FUNCTIONS
-async function loadCSV() {
+function loadCSV() {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './data.json', true);
@@ -79,7 +81,9 @@ function scoreAll(final) {
       graph.classList.add('graph-notext');
       sortedParties.map((o, i) => relocateParty(o, i))
     }, 250);
+
   } else {
+
     setTimeout(() => {
       graph.style.width = '24.8em';
       graph.classList.remove('graph-notext');
@@ -88,9 +92,9 @@ function scoreAll(final) {
         o.elem.style.backgroundColor = 'var(--'+o.party+')';
         o.elem.getElementsByClassName('graph-text')[0].style.bottom = (i%2 ? '-3em' : '');
       });
-
     }, 250);
-    return sortedParties.map((o) => o.party);
+    return sortedParties.map(o => o.party);
+
  }
 }
 
