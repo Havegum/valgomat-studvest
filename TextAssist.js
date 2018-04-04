@@ -2,10 +2,10 @@
 function TextAssist(text, elem) {
   this.moveTo = (text, elem) => {
     build.style.height = elem.clientHeight + 'px';
-    build.style.transform = 'translateY('
+    build.style.transform = 'translate3d(0, '
       + (elem.getBoundingClientRect().top
       + window.scrollY)
-      +'px)';
+      +'px, 0)';
     p.textContent = text;
 
     if(this.open === false) {

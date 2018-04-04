@@ -84,7 +84,7 @@ function scoreAll(final) {
       graph.style.width = '24.8em';
       graph.classList.remove('graph-notext');
       sortedParties.forEach((o, i) => {
-        o.elem.style.transform = 'translate3d('+(i*4)+'em,0,0)';
+        o.elem.parentNode.style.transform = 'translate3d('+(i*4)+'em,0,0)';
         o.elem.style.backgroundColor = 'var(--'+o.party+')';
         o.elem.getElementsByClassName('graph-text')[0].style.bottom = (i%2 ? '-3em' : '');
       });
@@ -125,8 +125,8 @@ function scaleParty(o) {
 }
 
 function relocateParty(o, i) {
-  o.elem.style.transform = barTranslateX(i);
-  o.elem.style.backgroundColor = /*(o.sum === SP.max) ? 'var(--main)' : */''; // Uncomment for colored leader
+  o.elem.parentNode.style.transform = barTranslateX(i);
+  o.elem.style.backgroundColor = '';
   return o;
 }
 
@@ -150,13 +150,15 @@ function drawParties() {
   for(let party in SP.partier) {
     let fullname = SP.partier[party];
 
+    let barContainer = document.createElement('div');
+    barContainer.classList.add('bar-container');
+    barContainer.style.transform = barTranslateX(i);
+
     let bar = document.createElement('div');
     bar.classList.add('bar');
     bar.id = party;
-    bar.style.transform = barTranslateX(i);
     bar.style.height = '50%';
-    // bar.style.opacity = 0.30 + (i*0.10); // Uncomment for greyscale color coding
-
+    barContainer.appendChild(bar);
 
     let p = document.createElement('p');
     p.textContent = fullname;
@@ -164,7 +166,7 @@ function drawParties() {
     p.style.color = 'var(--'+party+')';
     bar.appendChild(p);
 
-    build.appendChild(bar);
+    build.appendChild(barContainer);
     i++;
   }
   var div = document.getElementById('graph')

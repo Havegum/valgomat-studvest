@@ -28,7 +28,9 @@ body {
 
 @media
 only screen and (hover: hover),
-only screen and (min-width: 990px) {
+only screen and (pointer: fine),
+only screen and (min-width: 990px),
+not all and (orientation: portrait) {
   body { font-size: 16px; }
 }
 
@@ -95,7 +97,7 @@ h2 {
 .credit-person-wrap:hover > .credit-portrait,
 .credit-person-wrap:active > .credit-portrait {
   opacity: 1;
-  transform:scale3d(1.08,1.08,0);
+  transform:scale3d(1.08,1.08,1);
 }
 
 .byline-text {
@@ -136,11 +138,18 @@ h2 {
 .graph::after {
   display: block;
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   content: '';
   width: 100%;
   height: .2em;
   background-color: var(--charcoal);
+}
+
+.bar-container {
+  height: 7em;
+  position: absolute;
+  bottom: 0;
+  transition: transform .6s ease;
 }
 
 .bar {
@@ -326,17 +335,6 @@ h2 {
   margin: -1em auto 1em;
  }
 
-
-/* TODO: Questions follows the progress bar */
-/* .progress-text::after {
-  display: block;
-  content: '';
-  margin-top: .5em;
-  width: .4em;
-  height: .6em;
-  background-color: var(--main);
-} */
-
 .progress-text p,
 .progress-text span {
   display: inline;
@@ -391,7 +389,7 @@ h2 {
   margin-bottom: 1em;
   border-radius: 50%;
 
-  transition: .3s cubic-bezier(.45,1.46,.75,1);
+  transition: .3s cubic-bezier(.45, 1.46, .75, 1);
 }
 
 .poll-active {
@@ -409,25 +407,25 @@ h2 {
 }
 
 @keyframes pulse-out {
-  0%   { opacity:  0; transform: scale3d(.15, .15, 0); }
+  0%   { opacity:  0; transform: scale3d(.15, .15, 1); }
   30%  { opacity: .5; }
-  100% { opacity:  0; transform: scale3d(1);   }
+  100% { opacity:  0; transform: scale3d(1, 1, 1);   }
 }
 
 .poll-inactive {
   background-color: var(--grey);
-  transform: scale3d(.8, .8, 0);
+  transform: scale3d(.8, .8, 1);
 }
 
 .poll:hover > div,
 .poll:active > div {
   background-color: var(--main-light);
-  transform: scale3d(1.1, 1.1, 0);
+  transform: scale3d(1.1, 1.1, 1);
 }
 
 .poll:hover > .poll-inactive,
 .poll:active > .poll-inactive {
-  transform: scale3d(.95,.95,0);
+  transform: scale3d(.95, .95 ,1);
 }
 
 .poll > p {

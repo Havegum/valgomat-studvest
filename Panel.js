@@ -286,7 +286,7 @@ QuestionPanel.prototype.CaseBlurb = function(text) {
           .replace('[', '')
           .replace(')', '')
           .split(/\]\(/g);
-        return `<a href="`+str[1]+`">`+str[0]+'</a>';
+        return `<a href="`+str[1]+`" target="_blank">`+str[0]+'</a>';
       } else {
         return str;
       }
