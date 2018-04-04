@@ -214,13 +214,14 @@ h2 {
   background-color: white;
   flex-direction: column;
   box-shadow: 0 4px 8px #0003;
+  transform: translate3d(0, 0, 0);
 }
 
 /* Slide-animasjoner */
 .slideout-left {
   animation: slideleft .5s ease-out;
   opacity: 0;
-  transform: translate3d(-25%);
+  transform: translate3d(-25%, 0, 0);
 }
 
 .slidein-left {
@@ -230,7 +231,7 @@ h2 {
 }
 
 @keyframes slideleft {
-  from { opacity: 1; transform: translate3d(0);}
+  from { opacity: 1; transform: translate3d(0, 0, 0);}
   to   { opacity: 0; transform: translate3d(-25%, 0, 0);}
 }
 
@@ -247,7 +248,7 @@ h2 {
 }
 
 @keyframes slideright {
-  from { opacity: 1; transform: translate3d(0);}
+  from { opacity: 1; transform: translate3d(0, 0, 0);}
   to   { opacity: 0; transform: translate3d(25%, 0, 0);}
 }
 

@@ -1,6 +1,22 @@
 // Text assist v2
 function TextAssist(text, elem) {
-  this.moveTo = (text, elem) => {
+  'use strict';
+
+  var build = document.createElement('div');
+  build.classList.add('text-assist');
+
+  var background = document.createElement('div');
+  background.classList.add('text-assist-bg');
+  build.appendChild(background);
+
+  build.style.opacity = 0;
+  setTimeout(function() { build.style.opacity = ''; }, 20);
+
+  var p = document.createElement('p');
+  p.classList.add('text-assist-text');
+  build.appendChild(p);
+
+  this.moveTo = function(text, elem) {
     build.style.height = elem.clientHeight + 'px';
     build.style.transform = 'translate3d(0, '
       + (elem.getBoundingClientRect().top
@@ -14,25 +30,13 @@ function TextAssist(text, elem) {
     }
   };
 
-  this.close = () => {
-    if(this.open === false) return;
+  this.close = function() {
+    if(this.open === false) { return; }
     this.open = false;
-    build.parentNode.removeChild(build);
+    if(build.parentNode !== null) {
+      build.parentNode.removeChild(build);
+    }
   };
-
-  var build = document.createElement('div');
-  build.classList.add('text-assist');
-
-  var background = document.createElement('div');
-  background.classList.add('text-assist-bg');
-  build.appendChild(background);
-
-  build.style.opacity = 0;
-  setTimeout(() => build.style.opacity = '', 20);
-
-  var p = document.createElement('p');
-  p.classList.add('text-assist-text');
-  build.appendChild(p)
 
   this.moveTo(text, elem);
 

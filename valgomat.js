@@ -1,10 +1,5 @@
-"use strict";
-
-// TODO: FACEBOOK
-
-
 // VARIABLES
-var SP = {};
+let SP = {};
 
 SP.currentPanel = 0;
 
@@ -16,40 +11,13 @@ SP.panels = [];
 
 SP.ol = [];
 
-var a; // For testing purposes
+let a; // For testing purposes
 
-// ONLOAD
-window.addEventListener('load', function() {
-  try {
-    var json = loadCSV();
-  } catch (e) {
-    console.error(e);
-  }
-
-  json.then(JSON.parse).then(json => {
-
-    Object.keys(json).forEach(key => {
-      SP[key] = json[key];
-    });
-
-    var credit = new Credit(SP.byline);
-    document.getElementById('byline').appendChild(credit.build);
-
-    let scrollTarget = document.getElementsByClassName('credit-name')[0].offsetTop;
-    window.scrollTo(0, scrollTarget);
-
-
-    drawParties();
-    a = new QuestionPanel(0, true);
-    a.display();
-  });
-
-}, {once:true});
-
-// FUNCTIONS
-function loadCSV() {
-  return new Promise((resolve, reject) => {
-    var xhr = new XMLHttpRequest();
+// Global functions
+function loadJSON() {
+  'use strict';
+  return new Promise(function(resolve, reject) {
+    let xhr = new XMLHttpRequest();
     xhr.open('GET', './data.json', true);
     xhr.onreadystatechange = function() {
       if(xhr.readyState === XMLHttpRequest.DONE) {
@@ -59,49 +27,21 @@ function loadCSV() {
           reject(xhr);
         }
       }
-    }
+    };
     xhr.send(null);
   });
 }
 
-// Global functions
-function scoreAll(final) {
-  SP.max = 0;
-  var graph = document.getElementById('graph');
-  var sortedParties = Object.keys(SP.partier)
-    .map(scoreForParty) // Compare score to user response
-    .map(scaleParty) // Scale party graph
-    .slice()
-    .sort(comparePartyScore) // Sort parties by size
-
-  if(!final) {
-
-    setTimeout(() => {
-      graph.style.width = '';
-      graph.classList.add('graph-notext');
-      sortedParties.map((o, i) => relocateParty(o, i))
-    }, 250);
-
-  } else {
-
-    setTimeout(() => {
-      graph.style.width = '24.8em';
-      graph.classList.remove('graph-notext');
-      sortedParties.forEach((o, i) => {
-        o.elem.parentNode.style.transform = 'translate3d('+(i*4)+'em,0,0)';
-        o.elem.style.backgroundColor = 'var(--'+o.party+')';
-        o.elem.getElementsByClassName('graph-text')[0].style.bottom = (i%2 ? '-3em' : '');
-      });
-    }, 250);
-    return sortedParties.map(o => o.party);
-
- }
+function barTranslateX(i) {
+  'use strict';
+  return 'translate3d(' + (1.7 * i) + 'em,0,0)';
 }
 
 function scoreForParty(party) {
-  var sum = SP.userResponse.reduce((sum, point, i) => {
-    if(point === undefined) return sum;
-    let diff = Math.abs(SP.partyResponses[party][i] - point)
+  'use strict';
+  let sum = SP.userResponse.reduce(function(sum, point, i) {
+    if(point === undefined) { return sum; }
+    let diff = Math.abs(SP.partyResponses[party][i] - point);
     let base = 2 - diff - (point % 2);
     let multiplier = 1;
 
@@ -114,7 +54,6 @@ function scoreForParty(party) {
         multiplier *= SP.partyPriorityMultiplier;
       }
     }
-
     base *= multiplier;
     return sum + base;
   }, 0);
@@ -123,18 +62,21 @@ function scoreForParty(party) {
 }
 
 function scaleParty(o) {
+  'use strict';
   o.elem = document.getElementById(o.party);
   o.elem.style.height = 'calc(' + (o.sum / SP.max * 100 + (SP.currentPanel - SP.question.length)) + '% + .3em)';
   return o;
 }
 
 function relocateParty(o, i) {
+  'use strict';
   o.elem.parentNode.style.transform = barTranslateX(i);
   o.elem.style.backgroundColor = '';
   return o;
 }
 
 function comparePartyScore(a, b) {
+  'use strict';
   let comparison = 0;
   if(a.sum > b.sum) {
     comparison = -1;
@@ -144,14 +86,60 @@ function comparePartyScore(a, b) {
   return comparison;
 }
 
-function barTranslateX(i) {
-  return 'translate3d(' + (1.7 * i) + 'em,0,0)';
+function check(e, panel) {
+  'use strict';
+  let parent = e.parentNode;
+  e = e.firstElementChild;
+  if(e.classList.contains('poll-active')) { return; }
+
+  let checked = parent.getElementsByClassName('poll-active')[0];
+  if(checked === undefined) {
+    panel.navbar.forward.classList.remove('navbtn-right-disabled');
+  } else {
+    checked.classList.replace('poll-active', 'poll-inactive');
+  }
+
+  e.classList.replace('poll-inactive', 'poll-active');
 }
 
+function scoreAll(final) {
+  'use strict';
+  SP.max = 0;
+  let graph = document.getElementById('graph');
+  let sortedParties = Object.keys(SP.partier)
+    .map(scoreForParty) // Compare score to user response
+    .map(scaleParty) // Scale party graph
+    .slice()
+    .sort(comparePartyScore); // Sort parties by size
+
+  if(!final) {
+
+    setTimeout(function() {
+      graph.style.width = '';
+      graph.classList.add('graph-notext');
+      sortedParties.map(relocateParty);
+    }, 250);
+
+  } else {
+
+    setTimeout(function () {
+      graph.style.width = '24.8em';
+      graph.classList.remove('graph-notext');
+      sortedParties.forEach(function(o, i) {
+        o.elem.parentNode.style.transform = 'translate3d('+(i*4)+'em,0,0)';
+        o.elem.style.backgroundColor = 'var(--'+o.party+')';
+        o.elem.getElementsByClassName('graph-text')[0].style.bottom = (i%2 ? '-3em' : '');
+      });
+    }, 250);
+    return sortedParties.map((o) => o.party);
+  }
+}
+
+
 function drawParties() {
-  var build = document.createDocumentFragment();
-  var i = 0;
-  for(let party in SP.partier) {
+  'use strict';
+  let build = document.createDocumentFragment();
+  Object.keys(SP.partier).forEach(function(party, i) {
     let fullname = SP.partier[party];
 
     let barContainer = document.createElement('div');
@@ -171,9 +159,8 @@ function drawParties() {
     bar.appendChild(p);
 
     build.appendChild(barContainer);
-    i++;
-  }
-  var div = document.getElementById('graph')
+  });
+  let div = document.getElementById('graph');
   div.classList.add('graph');
   div.appendChild(build);
   scoreAll(true);
@@ -183,17 +170,32 @@ function drawParties() {
   }, 1000);
 }
 
-function check(e, panel) {
-  var parent = e.parentNode;
-  var e = e.firstElementChild;
-  if(e.classList.contains('poll-active')) return;
-
-  var checked = parent.getElementsByClassName('poll-active')[0];
-  if(checked === undefined) {
-    panel.navbar.forward.classList.remove('navbtn-right-disabled');
-  } else {
-    checked.classList.replace('poll-active', 'poll-inactive');
+// ONLOAD
+window.addEventListener('load', function() {
+  'use strict';
+  let json;
+  try {
+    json = loadJSON();
+  } catch (e) {
+    console.error(e);
   }
 
-  e.classList.replace('poll-inactive', 'poll-active');
-}
+  json.then((response) => JSON.parse(response)).then(function(json) {
+
+    Object.keys(json).forEach(function(key) {
+      SP[key] = json[key];
+    });
+
+    let credit = new Credit(SP.byline);
+    document.getElementById('byline').appendChild(credit.build);
+
+    let scrollTarget = document.getElementsByClassName('credit-name')[0].offsetTop;
+    window.scrollTo(0, scrollTarget);
+
+
+    drawParties();
+    a = new QuestionPanel(0, true);
+    a.display();
+  });
+
+}, {once:true});

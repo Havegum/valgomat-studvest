@@ -1,15 +1,18 @@
 function Panel() {
+  'use strict';
+
   var panel = document.createElement('div');
   panel.classList.add('valgomat-full');
   this.panel = panel;
   panel.addEventListener('mousedown', () => {
-    SP.assist.close();
+    if(SP.assist) { SP.assist.close(); }
   });
 }
 
 // Navbar constructor
 Panel.prototype.Navbar = function(panel, forwardDisabled, noReturn) {
-  var forwardDisabled = forwardDisabled || true;
+  'use strict';
+  forwardDisabled = forwardDisabled || true;
   var build = document.createElement('div');
   build.classList.add('valgomat-navbar');
 
@@ -32,7 +35,7 @@ Panel.prototype.Navbar = function(panel, forwardDisabled, noReturn) {
   forwardBtn.addEventListener('click', () => {
     if(!panel.interactable) return;
     if(!forwardBtn.classList.contains('navbtn-right-disabled')) {
-      SP.assist.close();
+      if(SP.assist) { SP.assist.close(); }
       panel.jumpTo(panel.questionNum + 1);
     } else {
       let error = panel.forwardError;
@@ -88,7 +91,8 @@ Panel.prototype.slideout = function (toRight) {
 
 // jumpTo(n)
 Panel.prototype.jumpTo = function(target) {
-  if(target === this.questionNum) return this;
+  'use strict';
+  if(target === this.questionNum) { return this; }
   var incomingPanel, slideLeft;
 
   switch (target) {
@@ -167,6 +171,7 @@ QuestionPanel.prototype = Object.create(Panel.prototype);
 
 // Progress constructor
 QuestionPanel.prototype.Progress = function(n) {
+  'use strict';
   var build = document.createElement('div');
   build.classList.add('progress');
   build.id = 'progress';
@@ -215,7 +220,8 @@ QuestionPanel.prototype.Progress = function(n) {
 
 // Inner constructor
 QuestionPanel.prototype.Inner = function(question, panel) {
-  var question = question || 'Mangler spørsmål ...';
+  'use strict';
+  question = question || 'Mangler spørsmål ...';
 
   var build = document.createElement('div');
   build.classList.add('valgomat-inner');
@@ -244,6 +250,7 @@ QuestionPanel.prototype.Inner = function(question, panel) {
 
 // PollButton constructor
 QuestionPanel.prototype.PollButton = function(n, panel) {
+  'use strict';
   var build = document.createElement('div');
   build.classList.add('poll');
   build.onclick = function() {
@@ -271,7 +278,8 @@ QuestionPanel.prototype.PollButton = function(n, panel) {
 
 // Case constructor
 QuestionPanel.prototype.CaseBlurb = function(text) {
-  var text = text || '(Kunne ikke laste sakstekst)';
+  'use strict';
+  text = text || '(Kunne ikke laste sakstekst)';
   var build = document.createElement('div');
   build.classList.add('case-blurb');
 
@@ -402,6 +410,7 @@ function ScorePanel() {
 ScorePanel.prototype = Object.create(Panel.prototype);
 
 ScorePanel.prototype.PartyPanel = function(party, i) {
+  'use strict';
   var build = document.createElement('div');
   build.classList.add('score-list-element');
   build.style.backgroundColor = 'var(--'+party+')';
@@ -421,7 +430,7 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
   prioritiesHeader.textContent = 'Dine prioriteringer:';
   build.appendChild(prioritiesHeader);
 
-  SP.priorities.forEach(priority => {
+  SP.priorities.forEach((priority) => {
     let priorityHead = document.createElement('h5');
     priorityHead.textContent = SP.question[priority].shorthand;
     build.appendChild(priorityHead);
@@ -444,7 +453,9 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
     switch (SP.userResponse[priority]) {
       case 2: userResponse = 'Enig';    break;
       case 1: userResponse = 'Nøytral'; break;
-      case 0: userResponse = 'Uenig';   break;
+      case 0:
+      case undefined:
+        userResponse = 'Uenig';   break;
     }
 
     let userP = document.createElement('p');
