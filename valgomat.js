@@ -84,7 +84,7 @@ function scoreAll(final) {
       graph.style.width = '24.8em';
       graph.classList.remove('graph-notext');
       sortedParties.forEach((o, i) => {
-        o.elem.style.transform = 'translateX('+(i*4)+'em)';
+        o.elem.style.transform = 'translate3d('+(i*4)+'em,0,0)';
         o.elem.style.backgroundColor = 'var(--'+o.party+')';
         o.elem.getElementsByClassName('graph-text')[0].style.bottom = (i%2 ? '-3em' : '');
       });
@@ -141,7 +141,7 @@ function comparePartyScore(a, b) {
 }
 
 function barTranslateX(i) {
-  return 'translateX(' + (1.7 * i) + 'em)';
+  return 'translate3d(' + (1.7 * i) + 'em,0,0)';
 }
 
 function drawParties() {
