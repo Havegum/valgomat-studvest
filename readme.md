@@ -8,6 +8,8 @@ Målet er en lett-å-bruke, lavterskel valgomat som retter søkelyset på SP-val
 
 ![mockup](./mockup-2.jpg)
 
-## Utvikler
+## Bidragsytere
 
-* **Halvard A. Vegum** - *Hovedutvikler* -
+* **Halvard A. Vegum** - *Digital utvikler* -
+* **Axel Fagerbakke** - *Journalist* -
+* **Einar Bjøru** - *Journalist* -

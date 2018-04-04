@@ -26,7 +26,10 @@ body {
   min-height: 100vh;
 }
 
-@media only screen and (min-width: 700px) {
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1000px),
+only screen and (   min--moz-device-pixel-ratio: 2) and (min-width: 1000px),
+only screen and (     -o-min-device-pixel-ratio: 2/1) and (min-width: 1000px) {
   body { font-size: 16px; }
 }
 
@@ -82,15 +85,17 @@ h2 {
   border-radius: 5em;
   object-fit: cover;
   object-position: center;
-  opacity: .7;
-  mix-blend-mode: multiply;
+  opacity: .5;
   box-shadow: 0 5px 7px #0003;
-  transition: opacity .3s;
+  transition:
+    opacity .3s,
+    transform .3s;
 }
 
 .credit-person-wrap:hover > .credit-portrait,
 .credit-person-wrap:active > .credit-portrait {
   opacity: 1;
+  transform:scale(1.08);
 }
 
 .byline-text {

@@ -1,9 +1,6 @@
 "use strict";
 
-// TODO: KREDITERING
 // TODO: FACEBOOK
-
-// TODO: Alle spørsmål
 
 
 // VARIABLES
