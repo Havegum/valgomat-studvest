@@ -1,6 +1,6 @@
 # Studvest valgomat for Studentparlamentvalget 2018
 
-Studvests første interaktive valgomat!
+Studvests første valgomat!
 
 ## Mål
 
@@ -10,7 +10,7 @@ Målet er en lett-å-bruke, lavterskel valgomat som retter søkelyset på SP-val
 
 ## Produkt
 
-<video src="demo1.webm" style="max-width=100%;max-height=100% controls preload></video>
+![demo](./demo1.gif)
 
 ## Bidragsytere
 
