@@ -1,12 +1,21 @@
 function Panel() {
   'use strict';
-
+  // constructor
   var panel = document.createElement('div');
   panel.classList.add('valgomat-full');
-  this.panel = panel;
+
+  var about = document.createElement('a');
+  about.classList.add('about');
+  about.href = "#about";
+  about.textContent = "?";
+  panel.appendChild(about);
+
   panel.addEventListener('mousedown', () => {
     if(SP.assist) { SP.assist.close(); }
   });
+
+  // exposed vars
+  this.panel = panel;
 }
 
 // Navbar constructor
@@ -162,7 +171,7 @@ function QuestionPanel(questionNum, noReturn) {
   this.caseBlurb = caseBlurb;
   this.questionNum = questionNum;
   this.interactable = true;
-  this.forwardError = 'Du må ta stilling til standpunktet før du kan gå videre';
+  this.forwardError = 'Du må ta stilling til påstanden før du kan gå videre';
 
   // Store globally
   SP.panels[questionNum] = this;
@@ -399,7 +408,7 @@ function ScorePanel() {
 
   var disclaimer = document.createElement('span');
   disclaimer.classList.add('score-disclaimer');
-  disclaimer.textContent = 'Denne valgomaten gir kun en pekepinn på hvilken liste du er mest enig i basert på et utvalg av spørsmål, og bør ikke brukes som en fasit. Studvest oppfordrer deg til å undersøke listene på egenhånd for å finne ut hvem du bør stemme på.';
+  disclaimer.innerHTML = 'Denne valgomaten gir kun en pekepinn på hvilken liste du er mest enig i basert på et utvalg av spørsmål, og bør ikke brukes som en fasit. Studvest oppfordrer deg til å undersøke listene på egenhånd for å finne ut hvem du bør stemme på. <a href="#" target="_blank">Du kan lese mer om hvordan vi lagde valgomaten her.</a>';
   panel.appendChild(disclaimer);
 
   scoreAll(true).forEach((party, i) => {
@@ -427,12 +436,12 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
   }
 
   var prioritiesHeader = document.createElement('h4');
-  prioritiesHeader.textContent = 'Dine prioriteringer:';
+  prioritiesHeader.textContent = 'Dine prioriteringssaker:';
   build.appendChild(prioritiesHeader);
 
   SP.priorities.forEach((priority) => {
     let priorityHead = document.createElement('h5');
-    priorityHead.textContent = SP.question[priority].shorthand;
+    priorityHead.textContent = SP.question[priority].text;
     build.appendChild(priorityHead);
 
     if(SP.partyPriorities[party].indexOf(priority) > -1) {
@@ -452,10 +461,9 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
     let userResponse;
     switch (SP.userResponse[priority]) {
       case 2: userResponse = 'Enig';    break;
-      case 1: userResponse = 'Nøytral'; break;
-      case 0:
+      case 0: userResponse = 'Uenig';   break;
       case undefined:
-        userResponse = 'Uenig';   break;
+      case 1: userResponse = 'Nøytral'; break;
     }
 
     let userP = document.createElement('p');

@@ -3,11 +3,34 @@ function Credit(persons) {
   // constructor
   var build = document.createDocumentFragment();
 
+  var aboutDiv = document.createElement('div');
+  aboutDiv.classList.add('about-wrap');
+  aboutDiv.id = "about";
+
+  var github = document.createElement('a');
+  github.href = "https://github.com/Havegum/valgomat-studvest";
+  github.target = "_blank"
+  github.textContent = "Kode og data";
+  aboutDiv.appendChild(github);
+
+  var about = document.createElement('a')
+  github.target = "_blank"
+  about.href = "#";
+  about.textContent = "Om valgomaten";
+  aboutDiv.appendChild(about);
+
+  build.appendChild(aboutDiv);
+
+  var div = document.createElement('div');
+  div.classList.add('byline');
+
   persons
     .map(this.toHTML)
     .forEach(el => {
-      build.appendChild(el);
+      div.appendChild(el);
     });
+
+  build.appendChild(div);
 
   // exposed vars
   this.build = build;
@@ -20,7 +43,7 @@ Credit.prototype.toHTML = function(person) {
 
   let img = document.createElement('img');
   img.classList.add('credit-portrait');
-  img.src = person.img;
+  img.src = "./img/" + person.img;
 
   let name = document.createElement('p');
   name.classList.add('credit-name', 'byline-text');

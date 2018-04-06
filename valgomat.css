@@ -62,14 +62,39 @@ h2 {
   line-height: .7;
 }
 
-
 #byline {
+  width: 100%;
+  max-width: 25em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.about-wrap a {
+  font-size: .9em;
+  margin: .4em;
+  padding: .2em;
+  color: var(--darkgrey);
+}
+
+.about-wrap a:hover,
+.score-disclaimer:hover {
+  color: var(--main);
+}
+
+.byline {
   margin: 2em 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  max-width: 30em;
 }
 
 .credit-person-wrap {
@@ -194,7 +219,7 @@ h2 {
   right: 0;
   bottom: 0;
   background-color: var(--lightgrey);
-  background-image: url('noise.jpg');
+  background-image: url('img/noise.jpg');
   background-position: center;
 }
 
@@ -215,6 +240,27 @@ h2 {
   flex-direction: column;
   box-shadow: 0 4px 8px #0003;
   transform: translate3d(0, 0, 0);
+}
+
+.about {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  font-size: .9em;
+  width: 1.3em;
+  height: 1.3em;
+  background-color: ;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  color: var(--main);
+  border: 1px solid var(--main);
+}
+
+.about:hover {
+  color: var(--main-light);
+  border: 1px solid var(--main-light);
 }
 
 /* Slide-animasjoner */
@@ -523,28 +569,28 @@ h2 {
 }
 
 .navbtn-right {
-  background-image: url('neste.svg');
+  background-image: url('img/neste.svg');
   background-position: right;
 }
 
 .navbtn-right:hover,
 .navbtn-right:active {
-  background-image: url('neste-h.svg');
+  background-image: url('img/neste-h.svg');
 }
 
 .navbtn-right-disabled {
-  background-image: url('neste-d.svg') !important;
+  background-image: url('img/neste-d.svg') !important;
   cursor: default;
 }
 
 .navbtn-left {
-  background-image: url('forrige.svg');
+  background-image: url('img/forrige.svg');
   background-position: left;
 }
 
 .navbtn-left:hover,
 .navbtn-left:active {
-  background-image: url('forrige-h.svg');
+  background-image: url('img/forrige-h.svg');
 }
 
 .text-assist {
@@ -615,6 +661,7 @@ h2 {
 .score-list-element > h4 {
   font-weight: 400;
   font-size: 1.4em;
+  margin: 2em 0 1em;
 }
 
 .score-list-element > h5 {
@@ -629,7 +676,6 @@ h2 {
   font-size: .75em;
   font-weight: 400;
 }
-
 
 .score-compare-wrap {
   display: flex;
