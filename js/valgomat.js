@@ -166,7 +166,7 @@ function drawParties() {
   scoreAll(true);
 
   setTimeout(function () {
-    new TextAssist('Når du tar valgomaten vil listene skjules. På slutten får du vite hvilke partier som er mest enig i dine valg', div);
+    new TextAssist('Når du tar valgomaten vil listene skjules. På slutten får du vite hvilke lister som er mest enig i dine valg', div);
   }, 1000);
 }
 

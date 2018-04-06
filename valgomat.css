@@ -85,7 +85,7 @@ h2 {
 }
 
 .about-wrap a:hover,
-.score-disclaimer:hover {
+.score-disclaimer a:hover {
   color: var(--main);
 }
 
@@ -645,6 +645,10 @@ h2 {
   margin: 1em;
 }
 
+.score-disclaimer a {
+  color: var(--darkgrey);
+}
+
 .score-list-element {
   color: white;
   padding: 2em;
@@ -665,7 +669,7 @@ h2 {
 }
 
 .score-list-element > h5 {
-  margin-top: 1.5em;
+  margin-top: 3em;
 }
 
 .score-list-party-priority-also {

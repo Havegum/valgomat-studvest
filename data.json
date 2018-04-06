@@ -44,120 +44,120 @@
       "il":[10,  7,  3, 16, 20],
       "ll":[20, 15, 10,  7,  4],
       "kd":[19, 13, 18, 21, 20],
-      "bl":[10000, 19,  1,  4,  6]
+      "bl":[ 2, 19,  1,  4,  6]
    },
    "partyPriorityMultiplier":2,
    "priorityMultiplier":2,
    "question":[
       {
-         "shorthand":" 0 Kaffesalg på lesesal og bibliotek",
+         "shorthand":"Kaffesalg på lesesal og bibliotek",
          "text":"Det bør være en form for kaffeutsalg på alle lesesaler og biblioteker.",
          "case":"I dag kan man kun kjøpe kaffe i kantinen på campus. Dette innebærer at enkelte lokaler som biblioteker og lesesaler ikke har utsalg av kaffe. Slike utsalg kan derimot føre til større kostnader for UiB og Sammen."
       },
       {
-         "shorthand":" 1 Obligatorisk lyd og videoopptak ved UIB",
+         "shorthand":"Obligatorisk lyd og videoopptak ved UiB",
          "text":"Det bør være obligatorisk lyd- og videoopptak fra alle forelesninger ved UiB.",
-         "case":"UIB har tilrettelagt for lyd og videoopptak ved enkelte auditorium på campus. Det er derimot opp til foreleserne selv om de ønsker å benytte seg av disse funksjonene. Mange lokaler ved UiB er også uten disse funksjonene."
+         "case":"UiB har tilrettelagt for lyd og videoopptak ved enkelte auditorium på campus. Det er derimot opp til foreleserne selv om de ønsker å benytte seg av disse funksjonene. Mange lokaler ved UiB er også uten disse funksjonene."
       },
       {
-         "shorthand":" 2 Kjøttfrie dager",
+         "shorthand":"Kjøttfrie dager i kantinen",
          "text":"Kantinen bør ha flere kjøttfrie dager.",
          "case":"Sammen sine kantiner på campus har i dag en kjøttfri dag i måneden. De har i tillegg veganske alternativer til alle måltid."
       },
       {
-         "shorthand":" 3 Gratis pensum",
+         "shorthand":"Gratis pensum",
          "text":"Det bør være gratis pensum for studenter.",
          "case":"I mars diskuterte Norsk studentorganisasjon og OsloMet-ledelsen mulighetene for å gjøre pensum til en del av gratisprinsippet til høyere utdanning. "
       },
       {
-         "shorthand":" 4 Eksamen 18. mai",
+         "shorthand":"Eksamensfri 18. mai",
          "text":"Det bør være eksamensfri 18. mai.",
-         "case":"Enkelte studieprogrammer har eksamen dagen etter nasjonens største festdag, 17. mai. 18.mai er derimot ikke en rød dag, og er dermed en vanlig arbeidsdag som alle andre. Derfor kan eksamen bli lagt til denne dagen. [Les mer](https://www.studvest.no/redd-for-at-18-mai-eksamen-gar-utover-karakteren/)"
+         "case":"Enkelte studieprogrammer har eksamen [dagen etter nasjonens største festdag](https://www.studvest.no/redd-for-at-18-mai-eksamen-gar-utover-karakteren/), 17. mai. 18.mai er derimot ikke en rød dag, og er dermed en vanlig arbeidsdag som alle andre. Derfor kan eksamen bli lagt til denne dagen."
       },
       {
-         "shorthand":" 5 Velge eksamenform selv",
+         "shorthand":"Velge eksamenform selv",
          "text":"Som student bør man selv få velge hvilken form for eksamen man skal ha.",
          "case":"Noen studenter foretrekker skoleeksamen, andre muntlig eksamen og noen foretrekker hjemmeeksamen. I dag er det fastsatt på forhånd hvilken eksamensform hvert enkelt emne har."
       },
       {
-         "shorthand":" 6 Kjønnskvotering",
+         "shorthand":"Kjønnskvotering",
          "text":"Det bør være kjønnskvotering til enkelte studielinjer.",
          "case":"Det er uenighet blant listene om enkelte studielinjer skal kvotere inn studenter etter kjønn for å oppnå en kjønnsbalanse ved forskjellige studier og yrker. [Les mer](https://www.studvest.no/mekka-for-kjonnskvotering/)"
       },
       {
-         "shorthand":" 7 Studiestøtte",
+         "shorthand":"Studiestøtte",
          "text":"Studiestøtten bør heves.",
-         "case":"Studiestøtten per dags dato er 108.250 kroner i året. Enkelte må ty til ekstrajobber for å få økonomien til å gå rundt, mens andre klarer seg med den støtten de får. [Les mer](https://www.studvest.no/magnus-har-tre-deltidsjobber-ved-siden-av-studiene/)"
+         "case":"Studiestøtten per dags dato er 108.250 kroner i året. [Enkelte må ty til ekstrajobber](https://www.studvest.no/magnus-har-tre-deltidsjobber-ved-siden-av-studiene/) for å få økonomien til å gå rundt, mens andre klarer seg med den støtten de får."
       },
       {
-         "shorthand":" 8 Helsefondet til Sammen",
+         "shorthand":"Helsefondet til Sammen",
          "text":"Det var riktig å endre Sammens helsefond slik at refusjon til psykologtimer prioriteres fremfor legetimer.",
-         "case":"Sammen har et Helsefond som studenter kan søke om refusjon for helseutgifter fra. Tidligere kunne man søke om refusjon for utgifter til både legetimer, fysioterapeut, psykolog og tannskader ved fall og ulykker. Fra 2018 ble fondet endret til at man kun kan søke refusjon for psykologtimer. [Les mer](https://www.studvest.no/studentenes-legestotte-fjernes/)"
+         "case":"Sammen har et helsefond som studenter kan søke om refusjon for helseutgifter fra. Tidligere kunne man søke om refusjon for utgifter til både legetimer, fysioterapeut, psykolog og tannskader ved fall og ulykker. Fra 2018 ble fondet endret til at man kun kan søke refusjon for psykologtimer og tannskader ved ulykker og fall. [Les mer](https://www.studvest.no/studentenes-legestotte-fjernes/)"
       },
       {
-         "shorthand":" 9 Konkurranseutsatt kantinedrift",
+         "shorthand":"Konkurranseutsatt kantinedrift",
          "text":"Kantinedriften på campus bør konkurranseutsettes.",
          "case":"Sammen driver i dag alle kantinene på campus. Noen mener at det ville ført til billigere priser og bedre utvalg dersom andre aktører fikk mulighet til konkurrere med Sammen. Sammen har derimot en avtale som gjør at de får låne lokaler gratis. Slik vil det ikke være hvis noen andre aktører kommer til, og det er derfor uenigheter i om det vil bli billigere for studentene eller ikke."
       },
       {
-         "shorthand":" 10 Pensumsalg på campus",
+         "shorthand":"Flere valgmuligheter for pensumkjøp",
          "text":"Det bør være flere muligheter til å kjøpe pensum på campus.",
-         "case":"Her er saken: Per dags dato er det kun Akademika som selger bøker på campus. I januar avdekket Studvest at man kunne få samme bøker til billigere pris ved å handle andre steder. Akademika svarer at de kan sikre studentene riktig pensum og det nødvendige bredden til hvert fag. [Les mer](https://www.studvest.no/du-kan-spare-hundrevis-pa-a-bytte-bokhandler/)"
+         "case":"Her er saken: Per dags dato er det kun Akademika som selger bøker på campus. I januar avdekket Studvest at man [kan få samme bøker til billigere pris](https://www.studvest.no/du-kan-spare-hundrevis-pa-a-bytte-bokhandler/) ved å handle andre steder. Akademika svarer at de kan sikre studentene riktig pensum og det nødvendige bredden til hvert fag."
       },
       {
-         "shorthand":" 11 Økt inntektsgrense for studiestøtte",
+         "shorthand":"Økt inntektsgrense for studiestøtte",
          "text":"Inntektsgrensen for å få studiestøtte bør heves.",
-         "case":"Hvis en student med maksimalt stipend tjener mer enn 177.257,- på ett år, vil man miste muligheten for stipend. Heves grensen betyr det at du kan tjene mer før du mister stipendet."
+         "case":"Hvis en student med maksimalt stipend tjener mer enn 177.257 kroner på ett år, vil man miste muligheten for stipend. Heves grensen betyr det at du kan tjene mer før du mister stipendet."
       },
       {
-         "shorthand":" 12 Senket inntektsgrense for studiestøtte",
+         "shorthand":"Senket inntektsgrense for studiestøtte",
          "text":"Inntektsgrensen for å få studiestøtte bør senkes.",
-         "case":"Hvis en student med maksimalt stipend tjener mer enn 177.257,- på ett år, vil man miste muligheten for stipend. Senkes grensen betyr det at du tjener mindre før du mister stipendet."
+         "case":"Hvis en student med maksimalt stipend tjener mer enn 177.257 kroner på ett år, vil man miste muligheten for stipend. Senkes grensen betyr det at du kan tjene mindre før du mister stipendet."
       },
       {
-         "shorthand":" 13 Alkoholfrie arrangementer i fadderuken",
+         "shorthand":"Alkoholfrie arrangementer i fadderuken",
          "text":"Det bør legges mer vekt på alkoholfrie arrangementer i fadderuken.",
          "case":"Fadderuken preges av mange arrangementer der alkohol er tillatt. Alkoholfrie arrangement sliter derimot med dårlig oppmøte. [Les mer](https://www.studvest.no/mener-fadderne-prioriterer-festing-over-edrustudenter/)"
       },
       {
-         "shorthand":" 14 Hooke-forbud for faddere",
+         "shorthand":"Hooke-forbud for faddere",
          "text":"Det bør innføres et «hooke-forbud» (innebærer både sex og klining) for faddere mot fadderbarn.",
-         "case":"Journaliststudentene ved Høyskolen i Agder innførte i fjor et hookeforbud for faddere overfor fadderbarna. Dette for å unngå at fadderbarna skulle komme i ubehagelige situasjoner. De mente at det er et skjevt  maktforhold mellom faddere og fadderbarn. I lys av #metoo har seksuelle relasjoner med ujevn maktbalanse blitt svært aktuelt. [Les mer](http://universitas.no/nyheter/62479/faddergruppe-innforer-hookeforbud)"
+         "case":"Journaliststudentene ved Høyskolen i Oslo og Akershus [innførte i fjor et klineforbud](http://universitas.no/nyheter/62479/faddergruppe-innforer-hookeforbud) for faddere overfor fadderbarna. De mente at det er et skjevt maktforhold mellom faddere og fadderbarn. Flere fadderstyrer i Bergen har [avvist et slikt forbud](https://www.studvest.no/vil-ikke-innfore-hookeforbud/) til fordel for andre tiltak."
       },
       {
-         "shorthand":" 15 Systemer for varsling av seksuell trakassering",
+         "shorthand":"Systemer for varsling av seksuell trakassering",
          "text":"UiBs systemer for varsling av seksuell trakassering fungerer godt nok slik de er i dag.",
-         "case":"UiB lanserte tidligere i år sitt eget Si fra-system der studenter og ansatte kan gå inn å gi tilbakemeldinger til Universitet. Der kan man melde fra om både positive og negative saker. UiB hadde i vår blant annet en lang rekke med varslingssaker.<br><br>[Fem nye trakasseringssaker ved UiB](https://www.studvest.no/fem-nye-trakasseringssaker-ved-uib/)<br>[Feiret nytt system for ris og ros til UiB](https://www.studvest.no/feiret-nytt-system-for-ris-og-ros-til-uib/)"
+         "case":"UiB lanserte tidligere i år [sitt eget Si fra-system](https://www.studvest.no/feiret-nytt-system-for-ris-og-ros-til-uib/) der studenter og ansatte kan gå inn å gi tilbakemeldinger til Universitet. Der kan man melde fra om både positive og negative saker. UiB hadde i vår blant annet [en rekke med varslingssaker](https://www.studvest.no/fem-nye-trakasseringssaker-ved-uib/)."
       },
       {
-         "shorthand":" 16 Integrering av internasjonale studenter",
+         "shorthand":"Integrering av internasjonale studenter",
          "text":"UiB legger for dårlig til rette til å inkludere internasjonale studenter?",
-         "case":" Ifølge UiBs nettsider er det 1550 internasjonale studenter ved universitet. I “Studiebarometeret” svarte 80 prosent av norske studenter at de sjelden eller aldri har deltatt i aktiviteter med internasjonale studenter. [Les mer](https://www.studvest.no/staying-in-our-bubble-is-easier/)"
+         "case":" Ifølge UiBs nettsider er det 1550 internasjonale studenter ved universitet. I «Studiebarometeret» svarte 80 prosent av norske studenter at de sjelden eller aldri har deltatt i aktiviteter med internasjonale studenter. [Les mer](https://www.studvest.no/staying-in-our-bubble-is-easier/)"
       },
       {
-         "shorthand":" 17 Religiøs aktivitet på UiB",
+         "shorthand":"Religiøs aktivitet på UiB",
          "text":"UiB bør legge til rette for mer religiøs aktivitet.",
          "case":"Det er per dags dato et bønnerom på universitetets campus. Den norske kirke har også et tilbud som heter Studentprestene som holder til på Høyden. Et forbud mot nikab i undervisningssituasjoner blir også diskutert på Stortinget og vil mest sannsynlig bli vedtatt. [Les mer](https://www.studvest.no/na-gar-det-mot-nikab-forbud/)"
       },
       {
-         "shorthand":" 18 Tilbakemelding på eksamenssensur",
+         "shorthand":"Tilbakemelding på eksamenssensur",
          "text":"Man bør få obligatorisk tilbakemelding på eksamenssensur?",
          "case":"I dag må man selv be om å få tilsendt en begrunnelse av sensor etter at man har fått karakteren tilbake. Flere av årets lister ønsker at en slik tilbakemelding skal bli obligatorisk og komme sammen med karakteren. Dette vil imidlertid være ressurskrevende å innføre."
       },
       {
-         "shorthand":" 19 Døgnåpe lesesaler",
+         "shorthand":"Døgnåpe lesesaler",
          "text":"Lesesaler og/eller biblioteker bør være døgnåpne.",
-         "case":"Lesesaler og bibliotek har i dag stengetider. Stengetidene varierer. Lesesalene som er åpen lengst er åpen til rundt midnatt."
+         "case":"Lesesaler og biblioteker har i dag stengetider. Stengetidene varierer. Lesesalene som er åpen lengst er åpen til rundt midnatt."
       },
       {
-         "shorthand":" 20 Meltzerfondet",
-         "text":"UiBs Meltzerfond bør stoppe å investere i Kongsberggruppen og oljeselskaper.",
-         "case":"I Januar skrev Studvest om at Meltzerfondet ved UiB investerer i selskaper som Kongsberggruppen og flere oljeselskaper. Samtidig står det i fondets etiske regelverk at de ikke skal investere slik at det er en risiko for at de bidrar til uetiske handlinger, krenkelser av grunnleggende humanitære prinsipper eller miljøødeleggelser. UiB svarer at de følger oljefondets regelverk, og sier det ikke er enkelt å endre investeringene bort fra olje. [Les mer](https://www.studvest.no/har-penger-i-kongsberg-gruppen-og-flere-oljeselskaper/)"
+         "shorthand":"Meltzerfondet",
+         "text":"Meltzerfondet ved UiB bør stoppe å investere i Kongsberggruppen og oljeselskaper.",
+         "case":"I januar skrev Studvest om at Meltzerfondet ved UiB investerer i selskaper som Kongsberggruppen og flere oljeselskaper. Samtidig står det i fondets etiske regelverk at de ikke skal investere slik at det er en risiko for at de bidrar til uetiske handlinger, krenkelser av grunnleggende humanitære prinsipper eller miljøødeleggelser. [UiB svarer](https://www.studvest.no/gronne-investeringer-som-kan-bli-gronnere/) at de følger oljefondets regelverk, og sier det ikke er mulig å uten videre trekke seg fra investeringene. [Les mer](https://www.studvest.no/har-penger-i-kongsberg-gruppen-og-flere-oljeselskaper/)"
       },
       {
-         "shorthand":" 21 Taco i kantinen",
+         "shorthand":"Taco i kantinen",
          "text":"Det bør være taco i kantinen hver fredag.",
-         "case":"Tidligere serverte Sammen buffe i kantinen på Studentsenteret hver fredag. Som oftest taco. Dette ble i høst endret til å bare gjelde 1-2 ganger i måneden. Dette som en følge av for store kostnader, men det ble åpnet for at det kan komme tilbake i fremtiden med høyere. priser. [Les mer](https://www.studvest.no/ukens-hoydepunkt-spolert-for-uib-studenter/) "
+         "case":"Tidligere serverte Sammen buffé i kantinen på Studentsenteret hver fredag. Som oftest taco. Dette ble i høst endret til å bare gjelde én til to ganger i måneden. Dette som en følge av for store kostnader, men det ble åpnet for at det kan komme tilbake i fremtiden med høyere. priser. [Les mer](https://www.studvest.no/ukens-hoydepunkt-spolert-for-uib-studenter/) "
       }
    ]
 }

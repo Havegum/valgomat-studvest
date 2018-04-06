@@ -10,12 +10,12 @@ function Credit(persons) {
   var github = document.createElement('a');
   github.href = "https://github.com/Havegum/valgomat-studvest";
   github.target = "_blank"
-  github.textContent = "Kode og data";
+  github.textContent = "Rådata";
   aboutDiv.appendChild(github);
 
   var about = document.createElement('a')
   github.target = "_blank"
-  about.href = "#";
+  about.href = "https://www.studvest.no/slik-lagde-vi-valgomat/";
   about.textContent = "Om valgomaten";
   aboutDiv.appendChild(about);
 

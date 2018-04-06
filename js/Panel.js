@@ -408,7 +408,7 @@ function ScorePanel() {
 
   var disclaimer = document.createElement('span');
   disclaimer.classList.add('score-disclaimer');
-  disclaimer.innerHTML = 'Denne valgomaten gir kun en pekepinn på hvilken liste du er mest enig i basert på et utvalg av spørsmål, og bør ikke brukes som en fasit. Studvest oppfordrer deg til å undersøke listene på egenhånd for å finne ut hvem du bør stemme på. <a href="#" target="_blank">Du kan lese mer om hvordan vi lagde valgomaten her.</a>';
+  disclaimer.innerHTML = 'Denne valgomaten gir kun en pekepinn på hvilken liste du er mest enig i basert på et utvalg av spørsmål, og bør ikke brukes som en fasit. Studvest oppfordrer deg til å undersøke listene på egenhånd for å finne ut hvem du bør stemme på. <a href="https://www.studvest.no/slik-lagde-vi-valgomat/" target="_blank">Du kan lese mer om hvordan vi lagde valgomaten her.</a>';
   panel.appendChild(disclaimer);
 
   scoreAll(true).forEach((party, i) => {
