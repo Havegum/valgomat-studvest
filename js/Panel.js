@@ -51,8 +51,6 @@ Panel.prototype.Navbar = function(panel, forwardDisabled, noReturn) {
       if(SP.assist.text !== error || !SP.assist.open) {
         SP.assist.moveTo(error, document.getElementsByClassName('valgomat-navbar')[0]);
         panel.panel.addEventListener('mousedown', SP.assist.close, {once:true});
-      } else {
-        // SP.assist.shake();
       }
     }
   });
@@ -64,8 +62,8 @@ Panel.prototype.Navbar = function(panel, forwardDisabled, noReturn) {
 }
 
 // Save data
-Panel.prototype.store = function () {
-  SP.userResponse[this.questionNum] = this.response;
+Panel.prototype.store = function (questionNum, response) {
+  SP.userResponse[questionNum] = response;
 };
 
 // Place on screen
@@ -265,7 +263,7 @@ QuestionPanel.prototype.PollButton = function(n, panel) {
   build.onclick = function() {
     panel.response = n;
     check(this, panel);
-    panel.store();
+    panel.store(panel.questionNum, n);
     scoreAll();
   };
 
@@ -424,7 +422,6 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
   build.classList.add('score-list-element');
   build.style.backgroundColor = 'var(--'+party+')';
 
-
   var header = document.createElement('h3');
   header.textContent = (i + 1) + '. ' + SP.partier[party];
   header.classList.add('noselect');
@@ -449,8 +446,6 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
       span.classList.add('score-list-party-priority-also');
       span.textContent = SP.partier[party] + ' prioriterer også dette';
       build.appendChild(span);
-      // console.log(span);
-      // console.log(priorityHead);
     }
 
 
@@ -461,9 +456,9 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
     let userResponse;
     switch (SP.userResponse[priority]) {
       case 2: userResponse = 'Enig';    break;
-      case 0: userResponse = 'Uenig';   break;
-      case undefined:
       case 1: userResponse = 'Nøytral'; break;
+      case 0: userResponse = 'Uenig';   break;
+      default: userResponse = '(Kunne ikke hente svar)';
     }
 
     let userP = document.createElement('p');
@@ -480,9 +475,6 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
     let partyP = document.createElement('p');
     partyP.textContent = SP.partier[party] + ' svarte: ' + partyResponse;
     compareContainer.appendChild(partyP);
-
-
-
   });
 
   this.build = build;
