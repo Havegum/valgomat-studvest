@@ -454,11 +454,15 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
     build.appendChild(compareContainer);
 
     let userResponse;
-    switch (SP.userResponse[priority]) {
-      case 2: userResponse = 'Enig';    break;
-      case 1: userResponse = 'Nøytral'; break;
-      case 0: userResponse = 'Uenig';   break;
-      default: userResponse = '(Kunne ikke hente svar)';
+    if(SP.userResponse[priority] !== undefined) {
+      switch (SP.userResponse[priority]) {
+        case 2: userResponse = 'Enig';    break;
+        case 1: userResponse = 'Nøytral'; break;
+        case 0: userResponse = 'Uenig';   break;
+        default: userResponse = '(Kunne ikke hente svar)';
+      }
+    } else {
+      userResponse = '(Kunne ikke hente svar)';
     }
 
     let userP = document.createElement('p');

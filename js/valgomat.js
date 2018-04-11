@@ -13,6 +13,8 @@ SP.ol = [];
 
 let a; // For testing purposes
 
+console.log('v1.3');
+
 // Global functions
 function loadJSON() {
   'use strict';
