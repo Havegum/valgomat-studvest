@@ -8,13 +8,13 @@
   --darkgrey: #666;
   --charcoal: #333;
 
-  --va: #9F151D;
-  --sd: #E74A5A;
-  --rl: #344E45;
-  --il: #EE6A1E;
-  --ll: #188A60;
-  --kd: #E29F00;
-  --bl: #2F6A9B;
+  --venstrealliansen: #9F151D;
+  --sosialdemokratiskliste: #E74A5A;
+  --realistlista: #344E45;
+  --internasjonalliste: #EE6A1E;
+  --liberalliste: #188A60;
+  --gulliste: #E29F00;
+  --blliste: #2F6A9B;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }

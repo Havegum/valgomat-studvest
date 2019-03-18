@@ -1,10 +1,10 @@
-# Studvest valgomat for Studentparlamentvalget 2018
+# Studvest valgomat for Studentparlamentvalget
 
 Studvests første valgomat!
 
 ## Mål
 
-Målet er en lett-å-bruke, lavterskel valgomat som retter søkelyset på SP-valget 2018.
+Målet er en lett-å-bruke, lavterskel valgomat som retter søkelyset på studentparlamentvalget.
 
 ![mockup](./img/mockup-2.jpg)
 
