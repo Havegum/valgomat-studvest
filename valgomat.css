@@ -10,9 +10,10 @@
 
   --venstrealliansen: #9F151D;
   --sosialdemokratiskliste: #E74A5A;
-  --realistlista: #344E45;
   --internasjonalliste: #EE6A1E;
-  --liberalliste: #188A60;
+  --realistlista: #3a4746;
+  --grnnliste: #6baa11;
+  --liberalliste: #117f6d;
   --gulliste: #E29F00;
   --blliste: #2F6A9B;
 }
@@ -94,7 +95,7 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 60%;
 }
 
 .credit-person-wrap {

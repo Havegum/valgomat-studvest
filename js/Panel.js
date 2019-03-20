@@ -427,7 +427,7 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
   header.classList.add('noselect');
   build.appendChild(header);
 
-  if(party === 'kd') {
+  if(party === 'gulliste' || party === 'internasjonalliste' || party === 'grnnliste') {
     build.style.color = 'var(--charcoal)';
     header.style.color = 'var(--charcoal)';
   }
@@ -441,10 +441,10 @@ ScorePanel.prototype.PartyPanel = function(party, i) {
     priorityHead.textContent = SP.question[priority].text;
     build.appendChild(priorityHead);
 
-    if(SP.partyPriorities[party].indexOf(priority) > -1) {
+    if(SP.partyPriorities[party].indexOf((priority + 1).toString()) > -1) {
       let span = document.createElement('span');
       span.classList.add('score-list-party-priority-also');
-      span.textContent = SP.partier[party] + ' prioriterer også dette';
+      span.textContent = SP.partier[party] + ' prioriterer dette';
       build.appendChild(span);
     }
 

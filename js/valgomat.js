@@ -39,7 +39,7 @@ function loadJSON(url) {
 
 function barTranslateX(i) {
   'use strict';
-  return 'translate3d(' + (1.7 * i) + 'em,0,0)';
+  return 'translate3d(' + (1.453 * i) + 'em,0,0)';
 }
 
 function scoreForParty(party) {
@@ -131,7 +131,7 @@ function scoreAll(final) {
       graph.style.width = '24.8em';
       graph.classList.remove('graph-notext');
       sortedParties.forEach(function(o, i) {
-        o.elem.parentNode.style.transform = 'translate3d('+(i*4)+'em,0,0)';
+        o.elem.parentNode.style.transform = 'translate3d('+(i*3.42)+'em,0,0)';
         o.elem.style.backgroundColor = 'var(--'+o.party+')';
         o.elem.getElementsByClassName('graph-text')[0].style.bottom = (i%2 ? '-3em' : '');
       });
