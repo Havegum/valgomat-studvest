@@ -37,6 +37,48 @@ function loadJSON(url) {
   });
 }
 
+
+// The following function is by Rob Kendal. The source can be found here: https://github.com/bpk68/g-sheets-api
+// https://github.com/bpk68/g-sheets-api/blob/master/src/gsheetsapi.js
+function gsheetsAPI (sheetId, sheetNumber = 1) {
+  try {
+    const sheetsUrl = `https://spreadsheets.google.com/feeds/cells/${sheetId}/${sheetNumber}/public/values?alt=json-in-script`;
+    return fetch(sheetsUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error fetching sheet');
+        }
+        return response.text();
+      })
+      .then(resultText => {
+        const formattedText = resultText.replace('gdata.io.handleScriptLoaded(', '').slice(0, -2);
+        return JSON.parse(formattedText);
+      });
+  } catch (err) {
+    console.log(`gsheetsAPI error: ${err}`);
+    return {};
+  }
+};
+
+function parseToArrays(JSONResponse) {
+  let array = [];
+
+  for (let item of JSONResponse.feed.entry) {
+    const cell = item['gs$cell']; // gets cell data
+    const val =  cell['$t']; // gets cell value
+    const col = +cell['col'] - 1; // get col (and set to 0-indexed)
+    const row = +cell['row'] - 1; // get row (and set to 0-indexed)
+
+    if (val.trim() === '') continue;
+    if (!array[row]) array[row] = [];
+
+    array[row][col] = isNaN(+val) ? val : +val;
+  }
+  console.log(array);
+  return array;
+}
+
+
 function barTranslateX(i) {
   'use strict';
   return 'translate3d(' + (1.453 * i) + 'em,0,0)';
@@ -181,12 +223,14 @@ window.addEventListener('load', function () {
   let qCSV;
   let bylineCSV;
   try {
-    qCSV = loadJSON(qURL);
-    bylineCSV = loadJSON(bylineURL);
+    const url = '1xFWCh_furVF3ZTPOzJTxMNU6fj_CObsnATly4iIKC7A'
+    qCSV = gsheetsAPI(url, 1)
+    bylineCSV = gsheetsAPI(url, 2)
+
   } catch (e) {
     console.error(e);
   }
-  let parser = parseCSV('\t')
+  let parser = parseToArrays;
   qCSV.then(parser).then(rows => {
 
     SP.partier = {}
